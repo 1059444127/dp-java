@@ -20,4 +20,6 @@ public class GenericBootstrapConstants {
 	 * main properties file that gets loaded at first
 	 */
 	public static final String BOOTSTRAP_PROPERTIES_FILE="bootstrap.properties";
+	
+	public static final String GATEWAY_SYS = "gateway.properties";
 }
