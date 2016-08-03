@@ -1,0 +1,968 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<!-- saved from url=(0021)http://www.91360.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style id="znBdcsStyle" type="text/css">.bdcs-clearfix:after{content:'';display:block;clear:both;height:0}.bdcs-clearfix{zoom:1}.bdcs-search-custom-sug,.bdcs-search-custom-sug *{box-sizing:content-box;margin:0;padding:0;float:none;clear:none;overflow:hidden;white-space:nowrap;word-wrap:normal;border:0;background:0 0;width:auto;height:auto;max-width:none;min-width:none;max-height:none;min-height:none;border-radius:0;box-shadow:none;transition:none;text-align:left}.bdcs-search-custom-sug{display:none;position:absolute;z-index:2147483647}.bdcs-search-custom-sug-list{list-style:none;border:1px solid #DDD;background-color:#FFF}.bdcs-search-custom-sug-list{}.bdcs-search-custom-sug-list-item{display:block;list-style:none;cursor:pointer;padding:0 5px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.bdcs-search-custom-sug-list-item-current{background-color:#EBEBEB}.bdcs-search-custom-sug-list-item-author-novel,.bdcs-search-custom-sug-list-item-author-music,.bdcs-search-custom-sug-list-item-type-movie{color:#BABABA}.bdcs-search-custom-sug-list-item-author-novel,.bdcs-search-custom-sug-list-item-author-music{margin-left:5px}.bdcs-search-custom-sug-list-item-music{overflow:hidden;*zoom:1}.bdcs-search-custom-sug-list-item-value-movie{float:left}.bdcs-search-custom-sug-list-item-type-movie{float:right}.bdcs-search-custom-sug-skin{display:none;width:85px;height:85px;position:absolute;right:1px;bottom:1px}.bdcs-search-custom-sug-skin-img{width:85px;height:85px}.bdcs-search-custom-sug-i{color:#e64fa3;font-weight:700;margin-left:10px;font-family:simsun;font-style:normal}.bdcs-search-custom-sug-adv{width:105px;position:absolute;right:1px;top:1px;display:none}.bdcs-search-custom-sug-adv-img{position:absolute;top:0;right:0}.bdcs-search-custom-sug-list{width:px;}.bdcs-search-custom-sug-list-item{height:28px;line-height:28px;font-family:Arial,SimSun,sans-serif;font-size:14px;}.bdcs-search-custom-sug-list-item-value{color:#000000;}#bdcs-rec{display:none;}a.bdcs-inlinelink{color:#136EC2}</style>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>91360智慧病理网</title>
+        <meta name="description" content="91360智慧病理门户网是中国领先的病理行业资讯服务平台，涵盖数字病例、远程病理会诊等，服务于病理专家、医生、学生及医疗机构等人群，提供各类最新资讯、政策公告、学术研究、交流学习的病理公共平台。">
+        <meta name="keywords" content="病理,智慧病理,病理学,远程病理会诊,病理诊断,数字病理,病理会诊"> 
+        <meta name="renderer" content="webkit">
+        <meta name="copyright" content="(c)2015 91360.com">
+        <link rel="icon" type="image/png" href="http://img.91360.com/cms/img/ico/72-72.png">
+        <link rel="apple-touch-icon-precomposed" href="http://img.91360.com/cms/img/ico/144-144.png">
+        <link rel="stylesheet" type="text/css" href="${ctxStatic}/AdminLTE/mystatic/file/public.css">
+        <link rel="stylesheet" type="text/css" href="${ctxStatic}/AdminLTE/mystatic/file/header_style.css">
+        <link rel="stylesheet" type="text/css" href="${ctxStatic}/AdminLTE/mystatic/file/index_style.css">
+       				<!--[if lte IE 7]>
+        			<link rel="stylesheet" type="text/css" href="http://img.91360.com/cms/css/header_style_ie7.css?ver=1.03" />
+        			<link rel="stylesheet" type="text/css" href="http://img.91360.com/cms/css/index_style_ie7.css?ver=1.03" />
+        			<![endif]-->        <script type="text/javascript" async="" src="${ctxStatic}/AdminLTE/mystatic/file/js"></script><script src="${ctxStatic}/AdminLTE/mystatic/file/push.js"></script><script src="${ctxStatic}/AdminLTE/mystatic/file/hm.js"></script><script src="${ctxStatic}/AdminLTE/mystatic/file/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+        <script src="${ctxStatic}/AdminLTE/mystatic/file/index.js" type="text/javascript" charset="utf-8"></script>        <script>var basePath='http://www.91360.com/';</script>
+        <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="//hm.baidu.com/hm.js?410e441a62b3af5fed5ac16d9251a398";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+    <script src="${ctxStatic}/AdminLTE/mystatic/file/wgxpath.install.js" charset="utf-8" async=""></script></head>
+    <body>
+        <!--头部-->
+        <div class="header">
+            <div class="header1 w">
+                <div class="logo_img left">
+                    <a href="http://www.91360.com/"><img src="${ctxStatic}/AdminLTE/mystatic/file/comcsoft_logo6.png" width="100%" alt="91360智慧病理网" title="91360智慧病理网"></a>
+                    <div class="beta-icon"></div>
+                                        <a class="version-icon" href="http://www.91360.com/intro/logs.html" target="_blank">v0.8.160523</a>
+                                    </div>
+                <div class="log_reg right" id="login-wrap" style="margin-left:20px"><a href="javascript:;" class=""><span class="font_blue pr8">登录</span></a><span class="font_gray">|</span><a href="http://passport.91360.com/?goto=http%3A%2F%2Fwww.91360.com%2F"><span class="font_golden pl8">注册</span></a></div>
+                <div class="log_reg right">
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=4058948&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><span class="font_golden pl16">问题及反馈</span></a>
+                </div>
+                <div class="search_box right">
+                    <form action="http://search.91360.com/cse/search">
+                        <input type="text" class="search" name="q" id="bdcsMain" placeholder="输入关键字" autocomplete="off">
+                        <input type="submit" value="搜索" class="search_btn">
+                    <div><input type="hidden" name="s" value="6150389284387048268"><input type="hidden" name="entry" value="1"></div></form>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="header2">
+                <div class="w">
+                    <ul class="head_icon1" style="width:29%">
+                                                <li class="li1" style="width:33.33%"><a href="http://www.91360.com/blzx/" target="_blank">病理资讯</a></li>
+                        <li class="li2" style="width:33.33%">
+                                                                                                                                                                    <a href="http://www.91360.com/blzx/zcgg/" target="_blank"><p>政策公告</p></a> 
+                                                                                                                <a href="http://www.91360.com/blzx/hyhd/" target="_blank"><p>会议活动</p></a> 
+                                                                                    </li><li class="li2" style="width:33.33%">                            <a href="http://www.91360.com/blzx/hyzx/" target="_blank"><p>行业资讯</p></a> 
+                                                                                                                <a href="http://www.91360.com/blzx/rczp/" target="_blank"><p>人才招聘</p></a> 
+                                                                                                        </li>
+                    </ul>
+                    <ul class="head_icon2" style="width:48%">
+                                                <li class="li1" style="width:20%"><a href="http://www.91360.com/yxzy/" target="_blank">医学资源</a></li>
+                        <li class="li2" style="width:20%">
+                                                                                                            <a href="http://www.91360.com/yxzy/zxjz/" target="_blank"><p>直播课堂</p></a>    
+                                                                                    <a href="http://www.91360.com/yxzy/yxsp/" target="_blank"><p>视频讲座</p></a>    
+                                                        </li><li class="li2" style="width:20%">                            <a href="http://www.91360.com/yxzy/zysk/" target="_blank"><p>专业书刊</p></a>    
+                                                                                    <a href="http://www.91360.com/yxzy/blfx/" target="_blank"><p>病例分析</p></a>    
+                                                                            </li>
+                        <li class="li2" style="width:20%">
+                                                        <a href="http://www.91360.com/fzbl/" target="_blank"><p>分子病理</p></a>
+                                                        <a href="http://www.91360.com/mymp/" target="_blank"><p>名医名篇</p></a>
+                        </li>
+                        <li class="li2" style="width:20%">
+                                                                                                        <a href="http://qp.91360.com/" target="_blank"><p>数字读片</p></a>    
+                                                        <a href="http://www.91360.com/baike/myzj/" target="_blank"><p>名医专家</p></a>    
+                                                                            </li>
+                    </ul>
+                    <ul class="head_icon3" style="width:10%">
+                        <li class="li3"><a href="http://bbs.91360.com/" target="_blank">病理论坛</a></li>
+                    </ul>    
+                    <ul class="head_icon4" style="width:13%">
+                        <li class="li3"><a href="http://h.91360.com/" target="_blank">远程病理会诊平台</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+<div class="mobile-site" data-url="http://mm.91360.com/"></div><!--内容-->
+<div class="content w">
+    <div class="focus pt15"><script language="javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index.php"></script><a href="http://www.91360.com/index.php?m=poster&amp;c=index&amp;a=poster_click&amp;sitespaceid=1&amp;id=22&amp;url=http%3A%2F%2Fwww.91360.com%2F201605%2F13%2F488.html" target="_blank"><img title="第八届乳腺疾病病理诊断研修班" src="${ctxStatic}/AdminLTE/mystatic/file/20160708095828787.png" width="1025" height="80" style="border:0px;"></a></div>
+    <!--模块1-->
+    <div class="focus pt15">
+        <div class="hot_img"><link href="${ctxStatic}/AdminLTE/mystatic/file/carousel.css" type="text/css" rel="stylesheet">
+<div id="slide_x" class="slide_x">
+    <div class="box">
+    	<ul class="list">
+                    <li style="">
+            	<a href="http://www.91360.com/201606/76/349.html" title="ISO15189在病理科实验室质量体系文件控制管理中的应用" target="_blank">
+            		<img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_650_310_20160708034122711.png" alt="ISO15189在病理科实验室质量体系文件控制管理中的应用" width="650" height="310" title="ISO15189在病理科实验室质量体系文件控制管理中的应用">
+            	</a>
+            	<p>ISO15189在病理科实验室质量体系文件控制管理中的应用</p>
+            </li>
+                    <li>
+            	<a href="http://www.91360.com/201604/13/466.html" title="吉林省医师协会病理科医师分会第四届年会会议通知" target="_blank">
+            		<img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_650_310_20160603112459734.png" alt="吉林省医师协会病理科医师分会第四届年会会议通知" width="650" height="310" title="吉林省医师协会病理科医师分会第四届年会会议通知">
+            	</a>
+            	<p>吉林省医师协会病理科医师分会第四届年会会议通知</p>
+            </li>
+                    <li>
+            	<a href="http://www.91360.com/201602/13/390.html" title="第六届MDACC-中国姐妹医院诊断病理新进展研讨会" target="_blank">
+            		<img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_650_310_20160701095907205.png" alt="第六届MDACC-中国姐妹医院诊断病理新进展研讨会" width="650" height="310" title="第六届MDACC-中国姐妹医院诊断病理新进展研讨会">
+            	</a>
+            	<p>第六届MDACC-中国姐妹医院诊断病理新进展研讨会</p>
+            </li>
+                    <li>
+            	<a href="http://www.91360.com/special/topic9.html" title="国际妇产科病理学大会" target="_blank">
+            		<img src="${ctxStatic}/AdminLTE/mystatic/file/20160513110353663.png" alt="国际妇产科病理学大会" width="650" height="310" title="国际妇产科病理学大会">
+            	</a>
+            	<p>国际妇产科病理学大会</p>
+            </li>
+                </ul>
+    </div>
+    <ul class="btn">
+            <li class="b_1">1</li>
+            <li class="b_2">2</li>
+            <li class="b_3">3</li>
+            <li class="b_4 selected">4</li>
+        </ul>
+    <div class="plus"></div>
+	<div class="minus"></div>
+</div>
+<script src="${ctxStatic}/AdminLTE/mystatic/file/carousel.js" type="text/javascript"></script>
+<script>$("#slide_x").cxSlide({plus:true,minus:true});</script>
+</div>
+        <div class="hot_info"><div class="hot_text">
+    <h2 class="hot_title">头条新闻</h2>
+    <div class="p10">
+                        <a href="http://www.91360.com/201607/60/28511.html" target="_blank" title="胸腺脂肪瘤的病理概述">
+            <h3>■ 胸腺脂肪瘤的病理概述</h3>
+            <p>胸腺脂肪瘤（thymolipoma）是一种少见的纵隔良性肿瘤。占胸腺肿瘤的2％～9％，以青壮年多见，无性别差异。瘤大体标本呈白色或黄白色分叶状...</p>
+        </a>
+                                <ul class="hot_ul pt10">            <li><a href="http://www.91360.com/201607/76/374.html" target="_blank" title="原发性胆汁性肝硬化磁共振成像表现与病理分期的相关性研究">原发性胆汁性肝硬化磁共振成像表现与病理分期...</a></li>
+                                                        <li><a href="http://www.91360.com/201606/76/331.html" target="_blank" title="卵巢浆液性腺癌组织中TK1和Ki-67表达的意义">卵巢浆液性腺癌组织中TK1和Ki-67表达的意义</a></li>
+                                                        <li><a href="http://www.91360.com/201607/60/28490.html" target="_blank" title="集合管癌，Bellini肿瘤的免疫组化鉴别诊断   ">集合管癌，Bellini肿瘤的免疫组化鉴别诊断   </a></li>
+                                                        <li><a href="http://www.91360.com/201607/76/373.html" target="_blank" title="不同组织病理切片中常见的问题与对策">不同组织病理切片中常见的问题与对策</a></li>
+                                                        <li><a href="http://www.91360.com/201607/9/28510.html" target="_blank" title="祝贺“病理技术专项培训”取得圆满成功">祝贺“病理技术专项培训”取得圆满成功</a></li>
+                                                        <li><a href="http://www.91360.com/201607/60/28513.html" target="_blank" title="关于病理科使用免疫组化试剂的说明">关于病理科使用免疫组化试剂的说明</a></li>
+                                                        <li><a href="http://www.91360.com/201607/76/375.html" target="_blank" title="腹壁滑膜肉瘤的病理及临床特征">腹壁滑膜肉瘤的病理及临床特征</a></li>
+            </ul>                    </div> 
+</div></div>     
+    </div>
+    <!--模块2-->
+    <div class="pt15">
+        <!--模块2左边大内容块-->
+        <div class="wp74">
+            <!--会议活动-->
+            <div class="">
+    <div class="title">
+                <a href="http://www.91360.com/blzx/hyhd/"><h2>会议活动</h2></a>
+        <a href="http://www.91360.com/blzx/hyhd/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+        <div class="clear"></div>
+    </div>
+    <div class="meeting_activity">
+                        <a href="http://www.91360.com/201606/13/517.html" target="_blank" title="山东省第六次细胞病理学研讨会暨《甲状腺针吸细胞学新进展学习班》通知"><img src="${ctxStatic}/AdminLTE/mystatic/file/20160706092341887.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_meeting_1.jpg&#39;" width="242" height="180"></a>
+                        <div class="meeting_cont">
+                            <div id="pic_list_2" class="scroll_horizontal">
+                <div class="prev"></div>
+                <div class="next"></div>
+                <div class="box">
+                    <ul class="list">
+                    <li>
+                                            <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">临沂</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">16<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/517.html" target="_blank" title="山东省第六次细胞病理学研讨会暨《甲状腺针吸细胞学新进展学习班》通知">
+                                <h6>· 山东省第六次细胞病理学研讨会暨《甲状腺针吸细胞学新进展学习班》通知</h6>
+                                <p>主办方向：甲状腺针吸细胞学新进展</p>
+                                <p>主办方：聊城市人民医院</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">深圳</p>
+                                <p class="date_month">9月</p>
+                                <p class="date_day">16<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/514.html" target="_blank" title="分子病理高峰论坛——分子病理技术在病理外检中应用新进展研讨班">
+                                <h6>· 分子病理高峰论坛——分子病理技术在病理外检中应用新进展研讨班</h6>
+                                <p>主办方向：分子病理</p>
+                                <p>主办方：深圳市龙岗中心医院</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">广州</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">29<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/513.html" target="_blank" title="广州市继教项目《肿瘤病理诊断新进展》学习班通知">
+                                <h6>· 广州市继教项目《肿瘤病理诊断新进展》学习班通知</h6>
+                                <p>主办方向：肿瘤病理诊断</p>
+                                <p>主办方：广州医科大学附属第二医院</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">厦门</p>
+                                <p class="date_month">9月</p>
+                                <p class="date_day">2<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/511.html" target="_blank" title="2016上海-厦门儿童临床病理高峰论坛">
+                                <h6>· 2016上海-厦门儿童临床病理高峰论坛</h6>
+                                <p>主办方向：儿童肝脏疾病及肿瘤病理</p>
+                                <p>主办方：中华病理学会上海病理分会、上海市抗癌学会肿瘤病理专业委员会</p>
+                            </a>
+                        </div>
+                        <div class="clear"></div></li><li>                                            <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">广州</p>
+                                <p class="date_month">9月</p>
+                                <p class="date_day">9<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/508.html" target="_blank" title="关于召开2016年临床病理高峰论坛的通知（第一轮）">
+                                <h6>· 关于召开2016年临床病理高峰论坛的通知（第一轮）</h6>
+                                <p>主办方向：临床病理</p>
+                                <p>主办方：广东省医学会</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">广州</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">15<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/507.html" target="_blank" title="2016中华病理分会心血管疾病学组、中国抗癌协会肿瘤专委会心脏肿瘤病理学组第四届学术会议">
+                                <h6>· 2016中华病理分会心血管疾病学组、中国抗癌协会肿瘤专委会心脏肿瘤病理学组第四届学术会议</h6>
+                                <p>主办方向：心血管疾病、心脏肿瘤</p>
+                                <p>主办方：中华病理分会心血管疾病学组、中国抗癌协会肿瘤专委会心脏肿瘤病理学组</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">上海</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">26<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/506.html" target="_blank" title="国家级继续教育项目：中枢神经系统肿瘤病理诊断及分子检测新进展第二轮通知">
+                                <h6>· 国家级继续教育项目：中枢神经系统肿瘤病理诊断及分子检测新进展第二轮通知</h6>
+                                <p>主办方向：神经病理</p>
+                                <p>主办方：复旦大学附属华山医院病理科</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">鞍山</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">15<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201605/13/500.html" target="_blank" title="2016年辽宁省第二十六次病理学学术会议暨病理学分会第九届委员会换届会议通知">
+                                <h6>· 2016年辽宁省第二十六次病理学学术会议暨病理学分会第九届委员会换届会议通知</h6>
+                                <p>主办方向：恶性肿瘤病理诊断标准与规范</p>
+                                <p>主办方：辽宁省医学会</p>
+                            </a>
+                        </div>
+                        <div class="clear"></div></li><li>                                            <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">上海</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">17<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201605/13/499.html" target="_blank" title="2016年国家级继续教育项目前列腺病理诊断学习班（第十一期）">
+                                <h6>· 2016年国家级继续教育项目前列腺病理诊断学习班（第十一期）</h6>
+                                <p>主办方向：前列病腺理诊断</p>
+                                <p>主办方：上海第六人民医院病理科</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">北京</p>
+                                <p class="date_month">10月</p>
+                                <p class="date_day">28<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201604/13/450.html" target="_blank" title="国际妇产科病理学大会">
+                                <h6>· 国际妇产科病理学大会</h6>
+                                <p>主办方向：当代妇产科病理学和女性健康</p>
+                                <p>主办方：国际妇科病理学会、国际病理学会中国分会、北京大学医学部</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">苏州</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">25<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201605/13/488.html" target="_blank" title="2016年8月第八届乳腺疾病病理诊断研修班第二轮通知暨会议日程">
+                                <h6>· 2016年8月第八届乳腺疾病病理诊断研修班第二轮通知暨会议日程</h6>
+                                <p>主办方向：乳腺疾病</p>
+                                <p>主办方：中国抗癌协会肿瘤病理专业委员会、中华医学会病理学分会乳腺病理学组（筹）和全国乳腺病理通讯读片协作组</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">北京</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">1<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201604/13/474.html" target="_blank" title="国家癌症中心中国医学科学院肿瘤医院国家级继续教育项目细胞病理学习班通知（第二期）第一轮">
+                                <h6>· 国家癌症中心中国医学科学院肿瘤医院国家级继续教育项目细胞病理学习班通知（第二期）第一轮</h6>
+                                <p>主办方向：细胞病理学</p>
+                                <p>主办方：国家癌症中心、中国医学科学院肿瘤医院病理科细胞学室</p>
+                            </a>
+                        </div>
+                        <div class="clear"></div></li><li>                                        </li>
+                    
+                    <li>
+                                            <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">临沂</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">16<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/517.html" target="_blank" title="山东省第六次细胞病理学研讨会暨《甲状腺针吸细胞学新进展学习班》通知">
+                                <h6>· 山东省第六次细胞病理学研讨会暨《甲状腺针吸细胞学新进展学习班》通知</h6>
+                                <p>主办方向：甲状腺针吸细胞学新进展</p>
+                                <p>主办方：聊城市人民医院</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">深圳</p>
+                                <p class="date_month">9月</p>
+                                <p class="date_day">16<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/514.html" target="_blank" title="分子病理高峰论坛——分子病理技术在病理外检中应用新进展研讨班">
+                                <h6>· 分子病理高峰论坛——分子病理技术在病理外检中应用新进展研讨班</h6>
+                                <p>主办方向：分子病理</p>
+                                <p>主办方：深圳市龙岗中心医院</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">广州</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">29<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/513.html" target="_blank" title="广州市继教项目《肿瘤病理诊断新进展》学习班通知">
+                                <h6>· 广州市继教项目《肿瘤病理诊断新进展》学习班通知</h6>
+                                <p>主办方向：肿瘤病理诊断</p>
+                                <p>主办方：广州医科大学附属第二医院</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">厦门</p>
+                                <p class="date_month">9月</p>
+                                <p class="date_day">2<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/511.html" target="_blank" title="2016上海-厦门儿童临床病理高峰论坛">
+                                <h6>· 2016上海-厦门儿童临床病理高峰论坛</h6>
+                                <p>主办方向：儿童肝脏疾病及肿瘤病理</p>
+                                <p>主办方：中华病理学会上海病理分会、上海市抗癌学会肿瘤病理专业委员会</p>
+                            </a>
+                        </div>
+                        <div class="clear"></div></li><li>                                            <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">广州</p>
+                                <p class="date_month">9月</p>
+                                <p class="date_day">9<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/508.html" target="_blank" title="关于召开2016年临床病理高峰论坛的通知（第一轮）">
+                                <h6>· 关于召开2016年临床病理高峰论坛的通知（第一轮）</h6>
+                                <p>主办方向：临床病理</p>
+                                <p>主办方：广东省医学会</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">广州</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">15<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/507.html" target="_blank" title="2016中华病理分会心血管疾病学组、中国抗癌协会肿瘤专委会心脏肿瘤病理学组第四届学术会议">
+                                <h6>· 2016中华病理分会心血管疾病学组、中国抗癌协会肿瘤专委会心脏肿瘤病理学组第四届学术会议</h6>
+                                <p>主办方向：心血管疾病、心脏肿瘤</p>
+                                <p>主办方：中华病理分会心血管疾病学组、中国抗癌协会肿瘤专委会心脏肿瘤病理学组</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">上海</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">26<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201606/13/506.html" target="_blank" title="国家级继续教育项目：中枢神经系统肿瘤病理诊断及分子检测新进展第二轮通知">
+                                <h6>· 国家级继续教育项目：中枢神经系统肿瘤病理诊断及分子检测新进展第二轮通知</h6>
+                                <p>主办方向：神经病理</p>
+                                <p>主办方：复旦大学附属华山医院病理科</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">鞍山</p>
+                                <p class="date_month">7月</p>
+                                <p class="date_day">15<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201605/13/500.html" target="_blank" title="2016年辽宁省第二十六次病理学学术会议暨病理学分会第九届委员会换届会议通知">
+                                <h6>· 2016年辽宁省第二十六次病理学学术会议暨病理学分会第九届委员会换届会议通知</h6>
+                                <p>主办方向：恶性肿瘤病理诊断标准与规范</p>
+                                <p>主办方：辽宁省医学会</p>
+                            </a>
+                        </div>
+                        <div class="clear"></div></li><li>                                            <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">上海</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">17<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201605/13/499.html" target="_blank" title="2016年国家级继续教育项目前列腺病理诊断学习班（第十一期）">
+                                <h6>· 2016年国家级继续教育项目前列腺病理诊断学习班（第十一期）</h6>
+                                <p>主办方向：前列病腺理诊断</p>
+                                <p>主办方：上海第六人民医院病理科</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">北京</p>
+                                <p class="date_month">10月</p>
+                                <p class="date_day">28<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201604/13/450.html" target="_blank" title="国际妇产科病理学大会">
+                                <h6>· 国际妇产科病理学大会</h6>
+                                <p>主办方向：当代妇产科病理学和女性健康</p>
+                                <p>主办方：国际妇科病理学会、国际病理学会中国分会、北京大学医学部</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">苏州</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">25<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201605/13/488.html" target="_blank" title="2016年8月第八届乳腺疾病病理诊断研修班第二轮通知暨会议日程">
+                                <h6>· 2016年8月第八届乳腺疾病病理诊断研修班第二轮通知暨会议日程</h6>
+                                <p>主办方向：乳腺疾病</p>
+                                <p>主办方：中国抗癌协会肿瘤病理专业委员会、中华医学会病理学分会乳腺病理学组（筹）和全国乳腺病理通讯读片协作组</p>
+                            </a>
+                        </div>
+                                                                    <div class="date_cont">
+                            <div class="date_img">
+                                <p class="date_city">北京</p>
+                                <p class="date_month">8月</p>
+                                <p class="date_day">1<span class="date_font">号</span></p>
+                            </div>
+                            <a class="date_text" style="display:block" href="http://www.91360.com/201604/13/474.html" target="_blank" title="国家癌症中心中国医学科学院肿瘤医院国家级继续教育项目细胞病理学习班通知（第二期）第一轮">
+                                <h6>· 国家癌症中心中国医学科学院肿瘤医院国家级继续教育项目细胞病理学习班通知（第二期）第一轮</h6>
+                                <p>主办方向：细胞病理学</p>
+                                <p>主办方：国家癌症中心、中国医学科学院肿瘤医院病理科细胞学室</p>
+                            </a>
+                        </div>
+                        <div class="clear"></div></li><li>                                        </li>
+                    </ul>
+                </div>
+            </div>
+                        </div>
+    </div>
+</div>
+<script src="${ctxStatic}/AdminLTE/mystatic/file/jquery.cxscroll.min.js" type="text/javascript"></script>
+<script type="text/javascript">$('#pic_list_2').cxScroll();</script>            <!--模块2左边大内容块下半部分内容-->
+            <div>
+                <!--政策公告-->
+                                <div class="wpl35">
+                    <div class="title">
+                        <a href="http://www.91360.com/blzx/zcgg/"><h2 class="left">政策公告</h2></a>
+                        <a href="http://www.91360.com/blzx/zcgg/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+                        <div class="clear"></div>
+                    </div>
+                    <ul class="policy_announcements">
+                                                                <li>
+                            <a href="http://www.91360.com/201511/10/19057.html" target="_blank" title="冀卫医政质控函2015-27号关于召开河北省病理远程会诊技术培训暨项目落地推进会的通知">
+                                <div>
+                                    <h6><span>1</span>冀卫医政质控函2015-27号关于召开河北省病理远程会诊技术培训暨项目落地推进会的通知</h6>
+                                    <p>冀卫医政质控函2015-27号关于召开河北省病理远程会诊技术培训暨项目落地推进会的通知。</p>
+                                </div>
+                            </a>
+                        </li>
+                                            <li>
+                            <a href="http://www.91360.com/201511/10/19054.html" target="_blank" title="山西省关于召开国家卫生计生委病理远程会诊扩大试点工作推进会的通知">
+                                <div>
+                                    <h6><span>2</span>山西省关于召开国家卫生计生委病理远程会诊扩大试点工作推进会的通知</h6>
+                                    <p>山西省关于召开国家卫生计生委病理远程会诊扩大试点工作推进会的通知。</p>
+                                </div>
+                            </a>
+                        </li>
+                                            <li>
+                            <a href="http://www.91360.com/201511/10/19051.html" target="_blank" title="云南省病理质控中心关于执行国家卫计委批复扩大病理远程会诊试点的通知">
+                                <div>
+                                    <h6><span>3</span>云南省病理质控中心关于执行国家卫计委批复扩大病理远程会诊试点的通知</h6>
+                                    <p>云南省病理质控中心关于执行国家卫计委批复扩大病理远程会诊试点的通知。</p>
+                                </div>
+                            </a>
+                        </li>
+                                            <li>
+                            <a href="http://www.91360.com/201510/10/17495.html" target="_blank" title="关于国家卫生计生委病理远程会诊扩大试点工作河南省推进会的通知">
+                                <div>
+                                    <h6><span>4</span>关于国家卫生计生委病理远程会诊扩大试点工作河南省推进会的通知</h6>
+                                    <p>关于国家卫生计生委病理远程会诊扩大试点工作河南省推进会的通知</p>
+                                </div>
+                            </a>
+                        </li>
+                                                            </ul>
+                </div>
+                <!--行业资讯-->
+                                <div class="wpl65">
+                    <div class="title">
+                        <a href="http://www.91360.com/blzx/hyzx/"><h2>行业资讯</h2></a>
+                        <a href="http://www.91360.com/blzx/hyzx/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="industry_information">
+                                                                                        <div class="industry">
+                            <a href="http://www.91360.com/201607/9/28529.html" target="_blank" title="人工智能和病理学家联手 确诊乳腺癌几率大涨"><img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_238_134_20160708113013946.jpeg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_industry_1.jpg&#39;" width="238" height="134"></a>
+                            <div class="industry_text">
+                                <h3><a href="http://www.91360.com/201607/9/28529.html" target="_blank" title="人工智能和病理学家联手 确诊乳腺癌几率大涨">人工智能和病理学家联手 确诊乳腺癌几率大涨</a></h3>
+                                <p>近日贝斯以色列女执事医学中心（ BIDMC ）与哈佛医学院合作研发了一套人工智能系统，它可以用于乳腺癌的诊断。 <a href="http://www.91360.com/201607/9/28529.html" target="_blank" rel="nofollow"><span class="detail2">[详细]</span></a></p>
+                            </div>
+                        </div>
+                                                                                                <ul>                            <li><span>·</span><a href="http://www.91360.com/201607/9/28484.html" target="_blank" title="哈尔滨优纳云病理远程会诊高峰论坛会隆重举行">哈尔滨优纳云病理远程会诊高峰论坛会隆...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201607/9/28483.html" target="_blank" title="清远妇幼联手达安基因建清远首个病理远程会诊平台">清远妇幼联手达安基因建清远首个病理远...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201607/9/28456.html" target="_blank" title="彰武县人民医院术中冰冻病理保障手术顺利完成">彰武县人民医院术中冰冻病理保障手术顺...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28429.html" target="_blank" title="2016年中华医学会第十四届全国细胞病理学会议成功召开">2016年中华医学会第十四届全国细胞病理...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28425.html" target="_blank" title="数据融合需破内外壁垒">数据融合需破内外壁垒</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28419.html" target="_blank" title="第三届成都市病理工作质量控制学习班顺利举办">第三届成都市病理工作质量控制学习班顺...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28418.html" target="_blank" title="张智泓主任当选江苏省抗癌协会肿瘤病理专业委员会主任委员">张智泓主任当选江苏省抗癌协会肿瘤病理...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28409.html" target="_blank" title="中国医学装备协会病理装备技术专业委员会第一届年会暨第五届长三角地区病理技术研讨会纪要">中国医学装备协会病理装备技术专业委员...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28406.html" target="_blank" title="南宁市第九人民医院首例冰冻远程诊断顺利完成">南宁市第九人民医院首例冰冻远程诊断顺...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28405.html" target="_blank" title="新乡医学院迎来千新来教授一行前来参观学习">新乡医学院迎来千新来教授一行前来参观学习</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28394.html" target="_blank" title="2016年东莞市第二季度疑难病理读片会圆满召开">2016年东莞市第二季度疑难病理读片会圆...</a></li>
+                                                                                                                                                        <li><span>·</span><a href="http://www.91360.com/201606/9/28377.html" target="_blank" title="桐乡打造全国" 互联网+医疗"发展先行地"="">桐乡打造全国"互联网+医疗"发展先行地</a></li>
+                            </ul>                                                                                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--人才招聘-->
+        <div class="hiring wpr26">
+                        <div class="title">
+                <a href="http://www.91360.com/blzx/rczp/"><h2 class="left">人才招聘</h2></a>
+                <a href="http://www.91360.com/blzx/rczp/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+                <div class="clear"></div>
+            </div>
+            <ul>
+                                        <li>
+                    <div class="city"><a href="http://www.91360.com/city/25-2.html" target="_blank">北京</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/25/1581.html" target="_blank" title="北京大学首钢医院招聘1">北京大学首钢医院</a></h6>
+                        <p>职位人数：1</p><p title="本科及以上">学历专业：本科及以上</p>
+                    </div>
+                </li>
+                            <li>
+                    <div class="city"><a href="http://www.91360.com/city/40-258.html" target="_blank">宜春</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/40/1580.html" target="_blank" title="万载县人民医院招聘若干">万载县人民医院</a></h6>
+                        <p>职位人数：若干</p><p title="大专及以上">学历专业：大专及以上</p>
+                    </div>
+                </li>
+                            <li>
+                    <div class="city"><a href="http://www.91360.com/city/37-205.html" target="_blank">南通</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/37/1579.html" target="_blank" title="南通市第一人民医院招聘4">南通市第一人民医院</a></h6>
+                        <p>职位人数：4</p><p title="本科/硕士">学历专业：本科/硕士</p>
+                    </div>
+                </li>
+                            <li>
+                    <div class="city"><a href="http://www.91360.com/city/33-278.html" target="_blank">郑州</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/33/1578.html" target="_blank" title="郑州市第一人民医院招聘2">郑州市第一人民医院</a></h6>
+                        <p>职位人数：2</p><p title="研究生及以上">学历专业：研究生及以上</p>
+                    </div>
+                </li>
+                            <li>
+                    <div class="city"><a href="http://www.91360.com/city/37-204.html" target="_blank">苏州</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/37/1577.html" target="_blank" title="苏州高新区人民医院 主任/副主任医师招聘1">苏州高新区人民医院 主任/副主任医师</a></h6>
+                        <p>职位人数：1</p><p title="本科及以上">学历专业：本科及以上</p>
+                    </div>
+                </li>
+                            <li>
+                    <div class="city"><a href="http://www.91360.com/city/27-3.html" target="_blank">上海</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/27/1576.html" target="_blank" title="上海市浦东新区周浦医院招聘若干">上海市浦东新区周浦医院</a></h6>
+                        <p>职位人数：若干</p><p title="本科及以上">学历专业：本科及以上</p>
+                    </div>
+                </li>
+                            <li>
+                    <div class="city"><a href="http://www.91360.com/city/28-5.html" target="_blank">重庆</a></div>
+                    <div class="text">
+                        <h6><a href="http://www.91360.com/201607/28/1575.html" target="_blank" title="解放军第三二四医院招聘2">解放军第三二四医院</a></h6>
+                        <p>职位人数：2</p><p title="本科及以上">学历专业：本科及以上</p>
+                    </div>
+                </li>
+                                    </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--模块3-->
+    <div class="banner">
+        <div class="cont_left left">
+            <script language="javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(1).php"></script><a href="http://www.91360.com/index.php?m=poster&amp;c=index&amp;a=poster_click&amp;sitespaceid=1&amp;id=20&amp;url=http%3A%2F%2Fwww.keytest.cn%2F" target="_blank"><img title="苏州科诺医学检验所" src="${ctxStatic}/AdminLTE/mystatic/file/20160615041258225.png" width="788" height="60" style="border:0px;"></a>
+        </div> 
+        <div class="cont_right right">
+            <script language="javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(2).php"></script><a href="http://www.91360.com/index.php?m=poster&amp;c=index&amp;a=poster_click&amp;sitespaceid=1&amp;id=12&amp;url=http%3A%2F%2Fwww.kfbio.cn%2F" target="_blank"><img title="" src="${ctxStatic}/AdminLTE/mystatic/file/20150811023909108.jpg" width="222" height="60" style="border:0px;"></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--模块4-->
+    <!--医学资源-->
+    <div class="resource">
+                <div class="title">
+            <a href="http://www.91360.com/yxzy/"><h2>医学资源</h2></a>
+            <a href="http://www.91360.com/yxzy/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+            <div class="clear"></div>
+        </div>
+        <!--专业书刊-->
+        <div class="resource_cont">
+                        <a href="http://www.91360.com/yxzy/zysk/"><h3 class="title1">专业书刊</h3></a>
+                                                <div class="res_box1">
+                <a href="http://www.91360.com/201509/65/2952.html" target="_blank" title="《实用现代病理学技术（精）》"><img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_83_116_20160202020208103.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_book_1.jpg&#39;" style="width:83px;height:116px"></a>
+                <div class="res_text">
+                    <a href="http://www.91360.com/201509/65/2952.html" target="_blank" title="《实用现代病理学技术（精）》"><p class="res_text1">《实用现代病理学技术（精）》</p></a>
+                    <p class="res_text2">《实用现代病理学技术》的编写得到了著名病理学家刘彤...</p>
+                </div>
+            </div>
+                                                    <ul>                <li><a href="http://www.91360.com/201602/62/22823.html" target="_blank" title="《消化道黏膜病理活检解读（第2版）》"><span class="orange">•</span> 《消化道黏膜病理活检解读（第2版）》</a></li>     
+                                                                                    <li><a href="http://www.91360.com/201509/65/8152.html" target="_blank" title="《肿瘤影像学与病理学诊断(精)》"><span class="orange">•</span> 《肿瘤影像学与病理学诊断(精)》</a></li>     
+                                                                                    <li><a href="http://www.91360.com/201509/63/8151.html" target="_blank" title="《疑难外科病理诊断与鉴别诊断(精)》"><span class="orange">•</span> 《疑难外科病理诊断与鉴别诊断(精)》</a></li>     
+                                                                                    <li><a href="http://www.91360.com/201509/67/7989.html" target="_blank" title="《病理学试题库（附光盘）》"><span class="orange">•</span> 《病理学试题库（附光盘）》</a></li>     
+                </ul>                                            </div>
+        <!--医学视频-->
+        <div class="resource_cont">
+                        <a href="http://www.91360.com/yxzy/yxsp/"><h3 class="title1">视频讲座</h3></a>
+                                                    <div class="res_box">
+                    <a href="http://www.91360.com/201606/18/28397.html" target="_blank" title="黄述斌：子宫平滑肌肉瘤"><img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_132_116_20160629052541836.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_lecture_1.jpg&#39;" width="132" height="116"></a>
+                    <div class="res_text">
+                        <a href="http://www.91360.com/201606/18/28397.html" target="_blank" title="黄述斌：子宫平滑肌肉瘤"><p class="res_text1">黄述斌：子宫平滑肌肉瘤</p></a>
+                        <p class="res_text3">本视频由黄述斌老师为大家介绍子宫平滑肌肉瘤。</p>
+                    </div>
+                </div>
+                                                    <ul>                <li><a href="http://www.91360.com/201606/18/28225.html" target="_blank" title="刘志艳：甲状腺病例散记"><span class="orange">• </span>刘志艳：甲状腺病例散记</a></li>
+                                                                                    <li><a href="http://www.91360.com/201606/18/28002.html" target="_blank" title="李军川：乳腺癌病理诊断规范化探讨"><span class="orange">• </span>李军川：乳腺癌病理诊断规范化探讨</a></li>
+                                                                                    <li><a href="http://www.91360.com/201606/18/27998.html" target="_blank" title="金木兰：早期结直肠癌病理诊断相关问题"><span class="orange">• </span>金木兰：早期结直肠癌病理诊断相关问题</a></li>
+                                                                                    <li><a href="http://www.91360.com/201605/18/27820.html" target="_blank" title="李晟磊：肺浸润前病变的诊断"><span class="orange">• </span>李晟磊：肺浸润前病变的诊断</a></li>
+                </ul>                                            </div>
+        <!--在线讲座-->
+        <div class="resource_cont online_lecture">
+                        <a href="http://www.91360.com/yxzy/zxjz/"><h3 class="title1">直播课堂</h3></a>
+            <div class="video_img">
+                <img src="${ctxStatic}/AdminLTE/mystatic/file/free_video_1.png">
+            </div>
+            <ul class="video_text">
+                                        <li>
+                    <a href="http://www.91360.com/201603/20/26807.html" target="_blank" title="91360会议视频直播室邀您共听“苏南地区病理读片研讨会”"><span class="orange"></span> 91360会议视频直播室邀您共听“苏南地区病理读片研讨会”</a>
+                </li>
+                            <li>
+                    <a href="http://www.91360.com/201603/20/26750.html" target="_blank" title="91360智慧病理网直播教室第一次测试取得圆满成功"><span class="orange"></span> 91360智慧病理网直播教室第一次测试取得圆满成功</a>
+                </li>
+                            <li>
+                    <a href="http://www.91360.com/201603/20/26722.html" target="_blank" title="91360智慧病理网直播教室第一次测试圆满完成"><span class="orange"></span> 91360智慧病理网直播教室第一次测试圆满完成</a>
+                </li>
+                                    </ul>
+        </div>
+        <!--病例分析-->
+        <div class="resource_cont2">
+                        <a href="http://www.91360.com/yxzy/blfx/"><h3 class="title1">病例分析</h3></a>
+            <ul class="case_analysis">
+                                        <li><span>·</span> <a href="http://www.91360.com/201607/19/28528.html" target="_blank" title="48岁男性患急胸腺脂肪瘤入院治疗病例分析">48岁男性患急胸腺脂肪瘤入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28526.html" target="_blank" title="66岁女性患T细胞表型原发性ALK阴性ALCL入院治疗病例分析">66岁女性患T细胞表型原发性ALK阴性ALCL入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28514.html" target="_blank" title="57岁男性患膜性肾病与狼疮样综合征入院治疗病例分析">57岁男性患膜性肾病与狼疮样综合征入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28509.html" target="_blank" title="65岁男性患急性髓系白血病入院治疗病例分析 ">65岁男性患急性髓系白血病入院治疗病例分析 </a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28508.html" target="_blank" title="52岁男因维生素B12缺乏导致罕见的血液系统疾病入院治疗病例分析">52岁男因维生素B12缺乏导致罕见的血液系统疾病入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28501.html" target="_blank" title="65岁男性患淋巴上皮瘤样肺癌入院治疗病例分析">65岁男性患淋巴上皮瘤样肺癌入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28457.html" target="_blank" title="52岁男性患霍奇金淋巴瘤入院治疗病例分析">52岁男性患霍奇金淋巴瘤入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201607/19/28454.html" target="_blank" title="52岁男性原发性渗出性淋巴瘤并发Kaposi肉瘤入院治疗病例分析">52岁男性原发性渗出性淋巴瘤并发Kaposi肉瘤入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201606/19/28428.html" target="_blank" title="78岁男性患EBV相关侵袭性自然杀死细胞白血病入院治疗病例分析">78岁男性患EBV相关侵袭性自然杀死细胞白血病入院治疗病例分析</a></li>
+                            <li><span>·</span> <a href="http://www.91360.com/201606/19/28423.html" target="_blank" title="55岁男性患血管内大B细胞淋巴瘤入院治疗病例分析">55岁男性患血管内大B细胞淋巴瘤入院治疗病例分析</a></li>
+                                    </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--模块5-->
+    <div class="">
+        <!--医院指南-->
+        <div class="wpl29"><div class="title">
+        <a href="http://www.91360.com/baike/yyzn/"><h2>医院指南</h2></a>
+    <a href="http://www.91360.com/baike/yyzn/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+    <div class="clear"></div>
+</div>
+<div class="hos_guide">
+    <a href="http://www.91360.com/201508/22/37.html" target="_blank" title="江苏省人民医院"><img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_112_130_20150909053813879.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_hos_1.jpg&#39;"></a>
+    <div class="hos_img_text">江苏省人民医院</div>
+    <ul><li><a href="http://www.91360.com/201508/22/44.html" target="_blank" title="南京市溧水区人民医院">南京市溧水区人民医院</a></li><li><a href="http://www.91360.com/201508/22/58.html" target="_blank" title="南京市高淳人民医院">南京市高淳人民医院</a></li><li><a href="http://www.91360.com/201508/22/62.html" target="_blank" title="南京市浦口医院">南京市浦口医院</a></li><li><a href="http://www.91360.com/201508/22/63.html" target="_blank" title="南京市江宁医院">南京市江宁医院</a></li><li><a href="http://www.91360.com/201508/22/64.html" target="_blank" title="南京江北人民医院">南京江北人民医院</a></li><li><a href="http://www.91360.com/201508/22/65.html" target="_blank" title="南京军区南京总医院">南京军区南京总医院</a></li><li><a href="http://www.91360.com/201508/22/25.html" target="_blank" title="北京朝阳医院">北京朝阳医院</a></li></ul>
+</div>
+<div class="hos_guide mt20">
+    <a href="http://www.91360.com/201508/22/28.html" target="_blank" title="南京鼓楼医院"><img src="${ctxStatic}/AdminLTE/mystatic/file/20150909054000996.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_hos_1.jpg&#39;"></a>
+    <div class="hos_img_text">南京鼓楼医院</div>
+    <ul><li><a href="http://www.91360.com/201509/22/1895.html" target="_blank" title="北京大学第一医院">北京大学第一医院</a></li><li><a href="http://www.91360.com/201508/22/104.html" target="_blank" title="北京协和医院">北京协和医院</a></li><li><a href="http://www.91360.com/201607/22/28532.html" target="_blank" title="赤峰市医院">赤峰市医院</a></li><li><a href="http://www.91360.com/201607/22/28461.html" target="_blank" title="内蒙古医科大学附属医院">内蒙古医科大学附属...</a></li><li><a href="http://www.91360.com/201606/22/28259.html" target="_blank" title="杭州市第一人民医院">杭州市第一人民医院</a></li><li><a href="http://www.91360.com/201606/22/28166.html" target="_blank" title="浙江大学医学院附属儿童医院">浙江大学医学院附属...</a></li><li><a href="http://www.91360.com/201606/22/28016.html" target="_blank" title="湖北省肿瘤医院">湖北省肿瘤医院</a></li></ul>
+</div>
+</div>
+        <!--名医专栏-->
+        <div class="expert wp44"><div class="title">
+        <a href="http://www.91360.com/baike/myzj/"><h2 class="left">名医专栏</h2></a>
+    <a href="http://www.91360.com/baike/myzj/" target="_blank" rel="nofollow"><span class="r_arrow">更多</span></a>
+    <div class="clear"></div>
+</div>
+<div class="expert_box">
+            <div class="expert_text">
+                <div class="expert_item">
+            <img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_228_136_20151008093729660.png" onerror="this.src=&#39;http://img.91360.com/cms/img/free_expert_1.jpg&#39;" height="136" width="228">
+            <div class="expert_img_text">
+                <span class="font16 pl14">周晓军</span>
+                <span class="font14 pl12" title="南京军区南京总医院主任医师">(南京军区南京总医院...)</span>
+            </div>
+            <div class="expert_text_box">
+                                <p class=""><a href="http://www.91360.com/201508/23/3.html" target="_blank"><span class="e_name1">周晓军</span></a>：男，主任医师，南京大学医学院教授，博士及博士后导师，南京军区南京总医院病理科主任，全军临床病理中心主任。从事病理工作三十年，先后获得20项国家教委，军队及江苏省科技进步奖，先后在国内外发表研究论文200余篇。主编或参与编写... <a href="http://www.91360.com/201508/23/3.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></p>
+            </div>
+        </div>
+                <div class="expert_item" style="display:none">
+            <img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_228_136_20150818011545354.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_expert_1.jpg&#39;" height="136" width="228">
+            <div class="expert_img_text">
+                <span class="font16 pl14">范钦和</span>
+                <span class="font14 pl12" title="江苏省人民医院主任医师">(江苏省人民医院主任...)</span>
+            </div>
+            <div class="expert_text_box">
+                                <p class=""><a href="http://www.91360.com/201508/23/5.html" target="_blank"><span class="e_name1">范钦和</span></a>：男，南京医科大学一附院（江苏省人民医院）病理科主任医师，教授、博士研究生导师。先后四次赴美国，加拿大，澳大利亚做高级访问学者和合作研究，共四年半时间，师从国际病理学会主席Allen教授，专攻软组织肿瘤病理2年。
+研究方向... <a href="http://www.91360.com/201508/23/5.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></p>
+            </div>
+        </div>
+                <div class="expert_item" style="display:none">
+            <img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_228_136_20160406095539936.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_expert_1.jpg&#39;" height="136" width="228">
+            <div class="expert_img_text">
+                <span class="font16 pl14">张智泓</span>
+                <span class="font14 pl12" title="江苏省人民医院 主任医师">(江苏省人民医院 主...)</span>
+            </div>
+            <div class="expert_text_box">
+                                <p class=""><a href="http://www.91360.com/201509/23/5150.html" target="_blank"><span class="e_name1">张智泓</span></a>：女，医学博士，主任医师，硕士生导师，南京医科大学第一附属医院病理科主任。2005年－2006年美国M.D. Anderson癌症中心访问学者。江苏省十二五期间医学重点人才、江苏省六大高峰人才、江苏省第四期333第三层次培养对象。
+社会任职：
+... <a href="http://www.91360.com/201509/23/5150.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></p>
+            </div>
+        </div>
+                <div class="expert_item" style="display:none">
+            <img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_228_136_20160307093701106.png" onerror="this.src=&#39;http://img.91360.com/cms/img/free_expert_1.jpg&#39;" height="136" width="228">
+            <div class="expert_img_text">
+                <span class="font16 pl14">孟凡青</span>
+                <span class="font14 pl12" title="南京鼓楼医院主任医师">(南京鼓楼医院主任医师)</span>
+            </div>
+            <div class="expert_text_box">
+                                <p class=""><a href="http://www.91360.com/201509/23/28.html" target="_blank"><span class="e_name1">孟凡青</span></a>：女，南京大学医学院附属南京鼓楼医院主任医师。
+专业特长：肺间质疾病、骨与关节疾病、女性生殖系统疾病、神经病变病理诊断。
+所属系统：病理科
+学术成果：参与发表论文80余篇，参编专业书籍6篇。
+社会任职：南京医学... <a href="http://www.91360.com/201509/23/28.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></p>
+            </div>
+        </div>
+            </div>
+    <ul class="expert_ul_text">
+                <li><a href="http://www.91360.com/201508/23/3.html" target="_blank"><span class="e_name2">周晓军</span></a> 周晓军：男，主任医师，南京大学医学院教授，博士及博士后导师，南...<a href="http://www.91360.com/201508/23/3.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></li>
+                <li><a href="http://www.91360.com/201508/23/5.html" target="_blank"><span class="e_name2">范钦和</span></a> 范钦和：男，南京医科大学一附院（江苏省人民医院）病理科主任医师...<a href="http://www.91360.com/201508/23/5.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></li>
+                <li><a href="http://www.91360.com/201509/23/5150.html" target="_blank"><span class="e_name2">张智泓</span></a> 张智泓：女，医学博士，主任医师，硕士生导师，南京医科大学第一附...<a href="http://www.91360.com/201509/23/5150.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></li>
+                <li><a href="http://www.91360.com/201509/23/28.html" target="_blank"><span class="e_name2">孟凡青</span></a> 孟凡青，女，南京大学医学院附属鼓楼医院主任医师，病理科主任。擅...<a href="http://www.91360.com/201509/23/28.html" target="_blank" rel="nofollow"><span class="detail">详细介绍</span></a></li>
+                              
+    </ul>
+        </div></div>
+        <!--健康医疗-->
+        <div class="wpr26">
+                        <div class="title tab_btn">
+                <h3 class="on"><a href="http://www.91360.com/blzx/blzt/" target="_blank" title="更多病理杂谈相关资讯">病理杂谈&nbsp;&nbsp;<span style="color:#ccc;">|</span></a></h3>
+                <h3><a href="http://www.91360.com/blzx/bljs/" target="_blank" title="更多病理技术相关资讯">&nbsp;&nbsp;病理技术</a></h3>
+                <div class="clear"></div>
+            </div>
+            <div class="health_care">
+                <ul class="tab_cont active">
+                                                    <li><a href="http://www.91360.com/201607/60/28534.html" target="_blank" title="安瑞芳教授谈：HPV感染与阴道微生态">安瑞芳教授谈：HPV感染...</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28527.html" target="_blank" title="脑膜肉瘤">[科普] 脑膜肉瘤</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28533.html" target="_blank" title="肿瘤标志物用图说话">肿瘤标志物用图说话</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28525.html" target="_blank" title="乳腺肉瘤">[科普] 乳腺肉瘤</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28524.html" target="_blank" title="原发性心脏横纹肌肉瘤">[科普] 原发性心脏横纹肌肉瘤</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28513.html" target="_blank" title="关于病理科使用免疫组化试剂的说明">关于病理科使用免疫组...</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28515.html" target="_blank" title="日本新技术可短时间检验癌症病理样本端粒长短">日本新技术可短时间检...</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28511.html" target="_blank" title="胸腺脂肪瘤的病理概述">胸腺脂肪瘤的病理概述</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28481.html" target="_blank" title="2017西综考研病理学复习笔记：细胞玻璃样物质沉积">[考试] 2017西综考研病理学复...</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28490.html" target="_blank" title="集合管癌，Bellini肿瘤的免疫组化鉴别诊断   ">集合管癌，Bellini肿瘤...</a></li>
+                                    <li><a href="http://www.91360.com/201607/60/28488.html" target="_blank" title="阴道黑色素瘤">[科普] 阴道黑色素瘤</a></li>
+                                                </ul>
+                <ul class="tab_cont">
+                                                    <li><a href="http://www.91360.com/201606/79/28096.html" target="_blank" title="温度对病理切片制作的影响">温度对病理切片制作的影响</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/28103.html" target="_blank" title="如何处理脆组织？">如何处理脆组织？</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/28017.html" target="_blank" title="病理切片中须注意的安全细节">病理切片中须注意的安全细节</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27987.html" target="_blank" title="经验分享丨免疫组化操作要点（三）">经验分享丨免疫组化操作要点...</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27986.html" target="_blank" title="经验分享丨免疫组化操作要点（二）">经验分享丨免疫组化操作要点...</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27985.html" target="_blank" title="经验分享丨免疫组化操作要点（一）">经验分享丨免疫组化操作要点...</a></li>
+                                    <li><a href="http://www.91360.com/201606/60/27954.html" target="_blank" title="免疫组化常见问题的原因分析">免疫组化常见问题的原因分析</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27953.html" target="_blank" title="推荐一种简便的细胞块制作方法">推荐一种简便的细胞块制作方法</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27951.html" target="_blank" title="常规石蜡切片的制作">常规石蜡切片的制作</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27916.html" target="_blank" title="如何真正做好一张高质量的HE切片？">如何真正做好一张高质量的HE...</a></li>
+                                    <li><a href="http://www.91360.com/201606/79/27915.html" target="_blank" title="电镜免疫细胞化学技术">电镜免疫细胞化学技术</a></li>
+                                                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('.tab_btn h3').mouseover(function () {
+                $(this).addClass('on').siblings().removeClass('on');
+                $('.tab_cont').eq($(this).index()).addClass('active').siblings().removeClass('active');
+            })
+        </script>
+        <div class="clear"></div>
+    </div>
+    <!-- 分子病理，名家名篇，病理求知 -->
+    <div class="container mt20">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel">
+                                        <div class="title">
+                        <a href="http://www.91360.com/fzbl/"><h2>分子病理</h2></a>
+                        <a href="http://www.91360.com/fzbl/" target="_blank"><span class="r_arrow">更多</span></a>
+                        <div class="clear"></div>
+                    </div>
+                                                                                <div class="media">
+                        <div class="media-left">
+                            <a href="http://www.91360.com/201607/75/28489.html" target="_blank" title="2016年度国家重点研发计划“精准医学研究”项目公示"><img src="${ctxStatic}/AdminLTE/mystatic/file/thumb_110_110_20160708113548857.jpg" onerror="this.src=&#39;http://img.91360.com/cms/img/free_book_1.jpg&#39;" style="width:110px;height:110px"></a>
+                        </div>
+                        <div class="media-body">
+                            <a href="http://www.91360.com/201607/75/28489.html" target="_blank" title="2016年度国家重点研发计划“精准医学研究”项目公示" class="media-heading">2016年度国家重点研发计划“精准医学研...</a>
+                            <p class="res_text2">6月24日，国家卫生计生委医药卫生科技发展研究中心网站上发布了关于对国家重点研发计划“精准医学研究”2016年度项目安排进行...</p>
+                        </div>
+                    </div>
+                                                                                    <ul>                        <li><span class="orange">•</span><a href="http://www.91360.com/fzbl/fzbllcyy/" target="_blank">【分子病理临床应用】</a><a href="http://www.91360.com/201606/73/28254.html" target="_blank" title="分子病理流行病学：精准医疗的基础">分子病理流行病学：精准医疗的基础</a></li>     
+                                                                                                                                    <li><span class="orange">•</span><a href="http://www.91360.com/fzbl/jycx/" target="_blank">【基因测序】</a><a href="http://www.91360.com/201607/74/28530.html" target="_blank" title="病理常规诊断+基因检测更具优势">病理常规诊断+基因检测更具优势</a></li>     
+                                                                                                                                    <li><span class="orange">•</span><a href="http://www.91360.com/fzbl/jycx/" target="_blank">【基因测序】</a><a href="http://www.91360.com/201607/74/28491.html" target="_blank" title="基因组学助力肿瘤研究发展">基因组学助力肿瘤研究发展</a></li>     
+                                                                                                                                    <li><span class="orange">•</span><a href="http://www.91360.com/fzbl/jzyl/" target="_blank">【精准医疗】</a><a href="http://www.91360.com/201606/75/28361.html" target="_blank" title="2016年妇科肿瘤精准医疗高端论坛暨第一届江淮论坛在安徽合肥正式开幕">2016年妇科肿瘤精准医疗高端论坛暨第一届江淮论坛在安徽合肥正式开幕</a></li>     
+                                                                                                                                    <li><span class="orange">•</span><a href="http://www.91360.com/fzbl/jzyl/" target="_blank">【精准医疗】</a><a href="http://www.91360.com/201606/75/28359.html" target="_blank" title="精准医疗在中国面临的挑战">精准医疗在中国面临的挑战</a></li>     
+                        </ul>                                                                            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel">
+                                        <div class="title">
+                        <a href="http://www.91360.com/mymp/"><h2>名医名篇</h2></a>
+                        <a href="http://www.91360.com/mymp/" target="_blank"><span class="r_arrow">更多</span></a>
+                        <div class="clear"></div>
+                    </div>
+                                        <ul>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/378.html" target="_blank" title="软组织肿瘤病理诊断中的问题和挑战">软组织肿瘤病理诊断中的问题和挑战</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/377.html" target="_blank" title="改善HE染色技术提高病理石蜡切片制作质量的体会">改善HE染色技术提高病理石蜡切片制作质量的体会</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/376.html" target="_blank" title="肺癌石蜡包埋组织及新鲜标本组织芯片制备方法学探讨">肺癌石蜡包埋组织及新鲜标本组织芯片制备方法学探讨</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/375.html" target="_blank" title="腹壁滑膜肉瘤的病理及临床特征">腹壁滑膜肉瘤的病理及临床特征</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/374.html" target="_blank" title="原发性胆汁性肝硬化磁共振成像表现与病理分期的相关性研究">原发性胆汁性肝硬化磁共振成像表现与病理分期的相关性研究</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/373.html" target="_blank" title="不同组织病理切片中常见的问题与对策">不同组织病理切片中常见的问题与对策</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/372.html" target="_blank" title="冰冻切片及免疫组织化学技术在胸腹水细胞诊断中的应用">冰冻切片及免疫组织化学技术在胸腹水细胞诊断中的应用</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/371.html" target="_blank" title="淀粉样变性肾病诊断的病理技术探析">淀粉样变性肾病诊断的病理技术探析</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/370.html" target="_blank" title="乳头状汗腺瘤9例临床病理分析">乳头状汗腺瘤9例临床病理分析</a></li>
+                                            <li><span class="orange">•</span> <a href="http://www.91360.com/201607/76/369.html" target="_blank" title="细胞蜡块免疫标记在浆膜腔积液腺癌细胞病理学诊断中的临床价值">细胞蜡块免疫标记在浆膜腔积液腺癌细胞病理学诊断中的临床价值</a></li>
+                                        </ul>
+                                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel">
+                    <div class="title">
+                        <a href="http://bbs.91360.com/"><h2>病理论坛</h2></a>
+                        <a href="http://bbs.91360.com/" target="_blank"><span class="r_arrow">更多</span></a>
+                        <div class="clear"></div>
+                    </div>
+                    <script type="text/javascript" src="${ctxStatic}/AdminLTE/mystatic/file/api.php"></script><ul class="wdlist"><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-37-1.html" target="_blank">【呼吸系统】</a><a href="http://bbs.91360.com/thread-63106-1-1.html" title="中国非小细胞肺癌患者表皮生长因子受体基因突变检测专..." target="_blank">中国非小细胞肺癌患者表皮生长因子受体基因</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-37-1.html" target="_blank">【呼吸系统】</a><a href="http://bbs.91360.com/thread-63105-1-1.html" title="2015版 WHO肺肿瘤分类解读" target="_blank">2015版 WHO肺肿瘤分类解读</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-40-1.html" target="_blank">【乳腺和女性生殖系统】</a><a href="http://bbs.91360.com/thread-63104-1-1.html" title="宫颈TCT" target="_blank">宫颈TCT</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-39-1.html" target="_blank">【消化系统】</a><a href="http://bbs.91360.com/thread-63103-1-1.html" title="（胆囊）癌肉瘤" target="_blank">（胆囊）癌肉瘤</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-51-1.html" target="_blank">【内分泌病理】</a><a href="http://bbs.91360.com/thread-63102-1-1.html" title="良性和恶性嗜铬细胞瘤的区别" target="_blank">良性和恶性嗜铬细胞瘤的区别</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-37-1.html" target="_blank">【呼吸系统】</a><a href="http://bbs.91360.com/thread-63101-1-1.html" title="肺黏液性腺癌的病理概述" target="_blank">肺黏液性腺癌的病理概述</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-51-1.html" target="_blank">【内分泌病理】</a><a href="http://bbs.91360.com/thread-63100-1-1.html" title="胸腺脂肪瘤的病理概述" target="_blank">胸腺脂肪瘤的病理概述</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-44-1.html" target="_blank">【软组织病理】</a><a href="http://bbs.91360.com/thread-63099-1-1.html" title="骨化性肌炎" target="_blank">骨化性肌炎</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-43-1.html" target="_blank">【神经系统】</a><a href="http://bbs.91360.com/thread-63098-1-1.html" title="婴儿型纤维肉瘤" target="_blank">婴儿型纤维肉瘤</a></li><li><span class="orange">•</span><a href="http://bbs.91360.com/forum-44-1.html" target="_blank">【软组织病理】</a><a href="http://bbs.91360.com/thread-63097-1-1.html" title="软组织肿瘤病理诊断中的问题和挑战--王坚，范钦和" target="_blank">软组织肿瘤病理诊断中的问题和挑战--王坚，</a></li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--模块6 -->
+    <div class="banner">
+        <div class="left">
+            <script language="javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(3).php"></script><a href="http://www.91360.com/index.php?m=poster&amp;c=index&amp;a=poster_click&amp;sitespaceid=1&amp;id=24&amp;url=http%3A%2F%2Fwww.rundamedical.com%2F" target="_blank"><img title="上海润达医疗科技股份有限公司" src="${ctxStatic}/AdminLTE/mystatic/file/20160708095954350.png" width="715" height="66" style="border:0px;"></a>
+        </div> 
+        <div class="right">
+            <script language="javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(4).php"></script><a href="http://www.91360.com/index.php?m=poster&amp;c=index&amp;a=poster_click&amp;sitespaceid=1&amp;id=23&amp;url=http%3A%2F%2Fwww.kingmed.com.cn%2Findex.aspx" target="_blank"><img title="金域检验" src="${ctxStatic}/AdminLTE/mystatic/file/20160617043245728.png" width="299" height="66" style="border:0px;"></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--标题模块7-->
+    <div>
+        <!--百科知识--> 
+        <!--学术名词-->
+        <div class="clear"></div>
+    </div>
+    <!--标题模块8 专家问答 -->
+    <!--<div class="pt18"></div>-->
+    <!--次级底部 合作伙伴-->
+    <div class="partners">
+	<h4><a>合作伙伴</a></h4>
+	<div id="csl-partners" class="cc-carousel">
+		<a href="javascript:;" class="cc-carousel-prev"></a>
+		<a href="javascript:;" class="cc-carousel-next"></a>
+		<div class="cc-carousel-content">
+			<ul style="margin-left: 0px;">
+				
+				
+				
+				
+				
+				
+				
+				
+			<li><a href="http://www.keytest.cn/" target="_blank" alt="苏州科诺"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_8.png" alt="苏州科诺" title="苏州科诺"></a></li><li><a href="javascript:;" target="_blank" alt="优纳科技"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_1.jpg" alt="优纳科技" title="优纳科技"></a></li><li><a href="http://www.kfbio.cn/" target="_blank" alt="江丰生物科技"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_2.jpg" alt="江丰生物科技" title="江丰生物科技"></a></li><li><a href="http://www.hamamatsu.com.cn/" target="_blank" alt="槟松中国"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_3.jpg" alt="槟松中国" title="槟松中国"></a></li><li><a href="http://www.dmetrix.cn/" target="_blank" alt="dmetrix"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_4.jpg" alt="dmetrix" title="dmetrix"></a></li><li><a href="http://www.danjier.com/" target="_blank" alt="丹吉尔公司"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_5.jpg" alt="丹吉尔公司" title="丹吉尔公司"></a></li><li><a href="http://www.kingmed.com.cn/" target="_blank" alt="金域检验"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_6.png" alt="金域检验" title="金域检验"></a></li><li><a href="http://www.rundamedical.com/" target="_blank" alt="上海润达"><img src="${ctxStatic}/AdminLTE/mystatic/file/free_partners_7.png" alt="上海润达" title="上海润达"></a></li></ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>    <!--次级底部   友情链接-->
+    <div class="friendly_link">
+                <center>
+            <span>友情链接:</span>
+                                    <a href="http://www.cmacsp.org/cn/" target="_blank">中华医学会病理学分会</a> 
+                                                <a href="http://www.labweb.cn/" target="_blank">中华检验医学网</a> 
+                                                <a href="http://bbs.91360.com/" target="_blank">病理论坛</a> 
+                                                <a href="http://hao.91360.com/" target="_blank">病理网址导航</a> 
+                                                <a href="http://bbs.xctmr.com/" target="_blank">影像园</a> 
+                                                <a href="http://www.ccmtv.cn/" target="_blank">医学视频网</a> 
+                                                <a href="http://www.yigoonet.com/" target="_blank">医谷</a> 
+                                                <a href="http://www.91360.com/" target="_blank">智慧病理网</a> 
+                                                <a href="http://www.labdd.com/" target="_blank">检验地带网</a> 
+                                                <a href="http://h.91360.com/" target="_blank">数字病理远程会诊</a> 
+                                                <a href="http://www.nhfpc.gov.cn/" target="_blank">卫计委信息中心</a> 
+                                                <a href="http://www.caca.org.cn/" target="_blank">中国抗癌学会</a> 
+                                                <a href="http://qp.91360.com/" target="_blank">数字切片库</a> 
+                                                <a href="http://www.g-medon.com/" target="_blank">环球医学</a> 
+                                                <a href="http://h.91360.com/" target="_blank">远程病理会诊平台</a> 
+                                                <a href="http://www.f61.com/" target="_blank">儿科</a> 
+                                                <a href="http://bingli.iiyi.com/" target="_blank">病例中心</a> 
+                                                <a href="http://ysk.99.com.cn/" target="_blank">医生大全</a> 
+                                                <a href="http://bbs.med126.com/" target="_blank">医学论坛</a> 
+                                                <a href="http://www.yayinchuxue.com/" target="_blank">牙龈出血</a> 
+                                                <a href="http://www.nec.cc/" target="_blank">询医健康网</a> 
+                                                <a href="http://www.lunyiwang.net/" target="_blank">论医网</a> 
+                                                <a href="http://www.91ylxxw.com/" target="_blank">医疗信息网</a> 
+                                                <a href="http://www.meiyujiankang.com/" target="_blank">远程会诊</a> 
+                                                <a href="http://huizhen.999120.net/" target="_blank">导医远程会诊  </a> 
+                                                <a href="http://www.yaofangwang.com/yao/" target="_blank">药品大全</a> 
+                                                <a href="http://zl.hxyjw.com/" target="_blank">医界名家</a> 
+                                                <a href="http://www.yynet.cn/" target="_blank">上海医元网</a> 
+                                                <a href="http://www.bozhong.com/" target="_blank">播种网</a> 
+                                                <a href="http://www.iivd.net/" target="_blank">小桔灯网</a> 
+                                                <a href="http://jxl.91360.com/" target="_blank">纪小龙切片库</a> 
+                                                <a href="http://www.mypharma.com/" target="_blank">医药网</a> 
+                                                <a href="http://www.med999.net/" target="_blank">医家园</a> 
+                                                <a href="http://www.jjkk.org/" target="_blank">健健康康网</a> 
+                                                <a href="http://ask.cn939.com/" target="_blank">中医咨询</a> 
+                                </center>
+            </div>
+</div><script type="text/javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(5).php"></script><script type="text/javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(6).php"></script><script type="text/javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(7).php"></script><script type="text/javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(8).php"></script><script type="text/javascript" src="${ctxStatic}/AdminLTE/mystatic/file/index(9).php"></script>
+		<!--底部-->
+		<div class="footer">
+			<center>
+				<p>
+					<a href="http://www.91360.com/">91360智慧病理</a><span>■</span>
+					<a href="http://www.91360.com/intro/aboutus.html" target="_blank">关于我们</a><span>■</span>
+					<a href="http://www.91360.com/sitemap.xml" onclick="javascript:return false;">网站地图</a><span>■</span>
+					<a href="http://www.91360.com/intro/copyright.html" target="_blank">网站声明</a><span>■</span>
+					<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=4058948&amp;site=qq&amp;menu=yes" rel="nofollow">投诉建议 <img border="0" src="${ctxStatic}/AdminLTE/mystatic/file/pa" alt="合作、投诉、建议，欢迎联系。" title="合作、投诉、建议，欢迎联系。" class="online-qq"></a>
+				</p>
+				<p>CopyRight 2006-2016 91360.com All Rights Reserved. 版权所有: 江苏康克移软软件有限公司 宁卫网审(2015)41号 <a href="http://www.miitbeian.gov.cn/" rel="nofollow" target="_blank">苏ICP备13032250号</a> 电话: 40004-91360</p>
+			</center>
+		</div>
+				<script>!function(){var e=document.createElement("script");e.src="//push.zhanzhang.baidu.com/push.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();</script>
+		<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=6150389284387048268' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script><div id="bdcs"><div class="bdcs-container"><meta http-equiv="x-ua-compatible" content="IE=9">                          </div></div>
+	
+<div class="bdcs-search-custom-sug" id="bdcs-search-custom-sug" style="top: 67px; left: 892.672px; width: 299px;"><ul class="bdcs-search-custom-sug-list" id="bdcs-search-custom-sug-list"></ul></div></body></html>

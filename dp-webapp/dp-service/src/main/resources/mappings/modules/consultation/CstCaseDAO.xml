@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.consultation.dao.CstCaseDAO">
+    
+    <sql id="cstCaseColumns">
+    	a.id, 
+		a.case_id AS "caseLib.id", 
+		a.test_no, 
+		a.company AS "company.id", 
+		a.lab, 
+		a.user_id AS "user.id", 
+		a.office_id AS "office.id", 
+		a.area_id AS "area.id",
+		a.request_id AS "requestId",
+		a.kmbarcode, 
+		a.name, 
+		a.gender, 
+		a.age, 
+		a.age_unit, 
+		a.cli_dia, 
+		a.cli_mas, 
+		a.fam_his, 
+		a.oth_his, 
+		a.oth_sup, 
+		a.ope_org, 
+		a.bio_org, 
+		a.ope_find, 
+		a.pri_pat_dia, 
+		a.cst_pat_exp, 
+		a.state, 
+		a.test_code, 
+		a.cst_dia, 
+		a.src_app, 
+		a.src_env, 
+		a.src_app_version, 
+		a.apply_date AS "applyDate",
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag,
+		a.send_path,
+		c.name AS "company.name",
+		ar.name AS "area.name",
+		o.name AS "office.name",
+		u.name AS "user.name"
+    </sql>
+    
+    <sql id="cstCaseJoins">
+		LEFT JOIN sys_office c ON c.id = a.company
+		LEFT JOIN sys_area ar ON ar.id = a.area_id
+		LEFT JOIN sys_office o ON o.id = a.office_id
+		LEFT JOIN SYS_USER u ON u.id = a.user_id
+    </sql>
+    
+	<select id="get" resultType="CstCase">
+		SELECT 
+			count(distinct q.id) as slideNum,
+			<include refid="cstCaseColumns"/>
+		FROM T_CST_CASE a
+		<include refid="cstCaseJoins"/>
+		LEFT JOIN t_cst_slide q ON q.case_id = a.case_id
+		WHERE a.id = #{id}
+		<if test="caseLib.caseId != null and caseLib.caseId != ''">
+			or a.case_id = #{caseLib.caseId}
+		</if>
+	</select>
+	
+	<select id="findList" resultType="CstCase">
+		SELECT 
+			<include refid="cstCaseColumns"/>
+		FROM T_CST_CASE a 
+		<include refid="cstCaseJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<if test="state == 1"><!-- 查询已诊断 -->
+			AND a.STATE = '1'
+		</if>
+		<if test="state == null or state == ''"><!-- 查询未诊断 -->
+			AND a.STATE != '1'
+		</if>
+		<if test="state != null and state != ''"><!-- 查询未诊断其他状态 -->
+			AND a.STATE = #{state}
+		</if>
+		<if test="user.id != null and user.id != ''"><!--只查属于当前用户的病例 -->
+			AND a.user_id = #{user.id}
+		</if>
+		<if test="name != null and name != ''">
+			AND a.NAME like CONCAT('%', #{name}, '%')
+		</if>
+		<if test="cstDia != null and cstDia != ''">
+			AND a.cst_dia like CONCAT('%', #{cstDia}, '%')
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY a.${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY a.company, a.kmbarcode, a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="findAllList" resultType="CstCase">
+		SELECT 
+			<include refid="cstCaseColumns"/> 
+		FROM T_CST_CASE a
+		<include refid="cstCaseJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY a.company, a.kmbarcode, a.update_date DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO T_CST_CASE(
+			id, 
+			case_id, 
+			test_no, 
+			company, 
+			lab, 
+			user_id, 
+			office_id, 
+			area_id, 
+			request_id,
+			kmbarcode, 
+			name, 
+			gender, 
+			age, 
+			age_unit, 
+			cli_dia, 
+			cli_mas, 
+			fam_his, 
+			oth_his, 
+			oth_sup, 
+			ope_org, 
+			bio_org, 
+			ope_find, 
+			pri_pat_dia, 
+			cst_pat_exp, 
+			state, 
+			test_code, 
+			cst_dia, 
+			src_app, 
+			src_env, 
+			src_app_version,
+			apply_date,
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{caseLib.caseId}, 
+			#{testNo}, 
+			#{company.id}, 
+			#{lab}, 
+			#{user.id}, 
+			#{office.id}, 
+			#{area.id}, 
+			#{requestId},
+			#{kmbarcode}, 
+			#{name}, 
+			#{gender}, 
+			#{age}, 
+			#{ageUnit}, 
+			#{cliDia}, 
+			#{cliMas}, 
+			#{famHis}, 
+			#{othHis}, 
+			#{othSup}, 
+			#{opeOrg}, 
+			#{bioOrg}, 
+			#{opeFind}, 
+			#{priPatDia}, 
+			#{cstPatExp}, 
+			#{state}, 
+			#{testCode}, 
+			#{cstDia}, 
+			#{srcApp}, 
+			#{srcEnv}, 
+			#{srcAppVersion},
+			#{applyDate},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE T_CST_CASE SET 
+<!-- 			case_id = #{caseLib.id},  -->
+<!-- 			test_no = #{testNo},  -->
+<!-- 			company = #{company.id},  -->
+<!-- 			lab = #{lab},  -->
+<!-- 			user_id = #{user.id},  -->
+<!-- 			office_id = #{office.id},  -->
+<!-- 			area_id = #{area.id},  -->
+<!-- 			kmbarcode = #{kmbarcode},  -->
+<!-- 			name = #{name},  -->
+<!-- 			gender = #{gender},  -->
+<!-- 			age = #{age},  -->
+<!-- 			age_unit = #{ageUnit},  -->
+<!-- 			cli_dia = #{cliDia},  -->
+<!-- 			cli_mas = #{cliMas},  -->
+<!-- 			fam_his = #{famHis},  -->
+<!-- 			oth_his = #{othHis},  -->
+<!-- 			oth_sup = #{othSup},  -->
+<!-- 			ope_org = #{opeOrg},  -->
+<!-- 			bio_org = #{bioOrg},  -->
+<!-- 			ope_find = #{opeFind},  -->
+<!-- 			pri_pat_dia = #{priPatDia},  -->
+<!-- 			state = #{state},  -->
+<!-- 			test_code = #{testCode},  -->
+			<if test="cstPatExp!=null and cstPatExp !='' ">
+				cst_pat_exp = #{cstPatExp}, 
+			</if>
+			<if test="cstDia!=null and cstDia !='' ">
+				cst_dia = #{cstDia}, 
+			</if>
+			<if test="sendPath!=null and sendPath !='' ">
+				send_path = #{sendPath},
+			</if>
+			<if test="state!=null and state !='' ">
+				state = #{state},
+			</if>
+<!-- 			src_app = #{srcApp},  -->
+<!-- 			src_env = #{srcEnv},  -->
+<!-- 			src_app_version = #{srcAppVersion},   -->
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}
+<!-- 			remarks = #{remarks} -->
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE T_CST_CASE SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 查询诊断截图 -->
+	<select id="getImgs" resultType="cstSlideScreenshot">
+		SELECT 
+			id, 
+			case_id AS caseId, 
+			name, 
+			image, 
+			remarks
+		FROM t_cst_slide_screenshot
+		WHERE del_flag = '0' and case_id = #{caseId}
+	</select>
+	<!-- 查询辅助图片 -->
+	<select id="getImgsHelp" resultType="cstHelpCapture">
+		SELECT 
+			id, 
+			case_id AS caseId, 
+			name, 
+			image, 
+			remarks
+		FROM t_cst_help_capture
+		WHERE del_flag = '0' and case_id = #{caseId}
+	</select>
+	<!-- 查询应用类型app_type -->
+	<select id="getAppValue" resultType="string">
+		select app_value from t_sys_config where app_key = #{appKey}
+	</select>
+	<!-- 查询切片 -->
+	<select id="getCstSlide" resultType="cstSlide">
+		select 
+		id, 
+		case_id AS caseId, 
+		barcode, 
+		antitbody_name AS antitbodyName, 
+		antibody_code AS antibodyCode, 
+		label, 
+		overview, 
+		label_with_overview AS labelWithOverview, 
+		url, 
+		scanner,
+		remarks from t_cst_slide where case_id=#{caseId}
+	</select>
+</mapper>

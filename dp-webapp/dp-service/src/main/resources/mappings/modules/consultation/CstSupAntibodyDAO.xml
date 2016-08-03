@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.consultation.dao.CstSupAntibodyDAO">
+    
+    <sql id="cstSupAntibodyColumns">
+    	a.id, 
+		a.case_id AS caseId, 
+		a.antibody_code AS antibodyCode, 
+		a.antibody_name AS antibodyName, 
+		a.status, 
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag
+    </sql>
+    
+	<select id="get" resultType="cstSupAntibody">
+		SELECT 
+			<include refid="cstSupAntibodyColumns"/>
+		FROM T_CST_SUP_ANTIBODY a
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="cstSupAntibody">
+		SELECT 
+			u.name AS "createBy.name",
+			<include refid="cstSupAntibodyColumns"/>
+		FROM T_CST_SUP_ANTIBODY a 
+		LEFT JOIN SYS_USER u ON u.id = a.create_by
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<if test="status != null and status != ''">
+			AND a.status = #{status}
+		</if>
+		<if test="caseId != null and caseId != ''">
+			AND a.case_id = #{caseId}
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY a.${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY  a.create_date,a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="findAllList" resultType="cstSupAntibody">
+		SELECT 
+			<include refid="cstSupAntibodyColumns"/> 
+		FROM T_CST_SUP_ANTIBODY a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY a.create_date,a.update_date DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO T_CST_SUP_ANTIBODY(
+			id, 
+			case_id, 
+			antibody_code, 
+			antibody_name, 
+			status, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{case_id}, 
+			#{antibody_code}, 
+			#{antibody_name}, 
+			#{status},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE T_CST_SUP_ANTIBODY SET 
+			case_id = #{caseId}, 
+			antibody_code = #{antibodyCode}, 
+			antibody_name = #{antibodyName}, 
+			status = #{status},  
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE T_CST_SUP_ANTIBODY SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

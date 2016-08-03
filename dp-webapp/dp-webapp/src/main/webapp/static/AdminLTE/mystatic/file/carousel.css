@@ -1,0 +1,14 @@
+*{margin:0;padding:0;list-style:none;border:0}
+.slide_x{overflow:hidden;position:relative;margin:0 auto;width:650px;height:310px;background:#fff}
+.slide_x a{color:#fff;text-decoration:none}
+.slide_x .box{overflow:hidden;position:relative;width:650px;height:310px}
+.slide_x .list{overflow:hidden;width:9999px}
+.slide_x .list li{float:left;position:relative;width:650px}
+.slide_x .list img{vertical-align:top}
+.slide_x .list p{position:absolute;bottom:0;left:0;width:100%;height:40px;color:#FFF;font-size:16px;line-height:40px;text-indent:12px;background:url("../img/dialog_bg.png")}
+.slide_x .btn{overflow:hidden;position:absolute;bottom:8px;right:12px}
+.slide_x .btn li{float:left;width:20px;height:20px;line-height:20px;margin:0 0 0 16px;border-radius:1px;background:#575757;color:#fff;font-size:14px;text-align:center;cursor:pointer}
+.slide_x .btn .selected{background:#5185bd;color:#fff}
+.slide_x .minus,.slide_x .plus{position:absolute;top:100px;width:40px;height:50px;cursor:pointer}
+.slide_x .minus{left:0}
+.slide_x .plus{right:0}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd 
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd 
+                        ">
+    <context:component-scan base-package="com.kingmed.dp.is.job" />
+    <context:property-placeholder location="classpath:conf/dp-reg.properties,classpath:conf/dp-job.properties" />
+    
+    <bean id="regCenter" class="com.dangdang.ddframe.reg.zookeeper.ZookeeperRegistryCenter" init-method="init">
+        <constructor-arg>
+            <bean class="com.dangdang.ddframe.reg.zookeeper.ZookeeperConfiguration">
+                <property name="serverLists" value="${serverLists}" />
+                <property name="namespace" value="${namespace}" />
+                <property name="baseSleepTimeMilliseconds" value="${baseSleepTimeMilliseconds}" />
+                <property name="maxSleepTimeMilliseconds" value="${maxSleepTimeMilliseconds}" />
+                <property name="maxRetries" value="${maxRetries}" />
+                <property name="nestedPort" value="${nestedPort}" />
+                <property name="nestedDataDir" value="${nestedDataDir}" />
+            </bean>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="nDPIDTriggerJob" class="com.dangdang.ddframe.job.spring.schedule.SpringJobScheduler" init-method="init">
+        <constructor-arg ref="regCenter" />
+        <constructor-arg>
+            <bean class="com.dangdang.ddframe.job.api.JobConfiguration">
+                <constructor-arg name="jobName" value="nDPIDTriggerJob" />
+                <constructor-arg name="jobClass" value="com.kingmed.dp.is.job.NDPIDTriggerJob" />
+                <constructor-arg name="shardingTotalCount" value="${dpJob.shardingTotalCount}" />
+                <constructor-arg name="cron" value="${dpJob.cron}" />
+                <property name="shardingItemParameters" value="${dpJob.shardingItemParameters}" />
+                <property name="monitorExecution" value="${dpJob.monitorExecution}" />
+                <property name="failover" value="${dpJob.failover}" />
+                <property name="processCountIntervalSeconds" value="${dpJob.processCountIntervalSeconds}" />
+                <property name="concurrentDataProcessThreadCount" value="${dpJob.concurrentDataProcessThreadCount}" />
+                <property name="description" value="${dpJob.description}" />
+                <property name="disabled" value="${dpJob.disabled}" />
+                <property name="overwrite" value="${dpJob.overwrite}" />
+            </bean>
+        </constructor-arg>
+    </bean>
+ 
+</beans>

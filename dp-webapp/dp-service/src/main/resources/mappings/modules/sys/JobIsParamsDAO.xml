@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.sys.dao.JobIsParamsDAO">
+	
+	<sql id="jobIsParamsColumns">
+		a.id,
+		a.user_name,
+		a.url,
+		a.user_password,
+		a.remarks,
+		a.create_by,
+		a.create_date,
+		a.update_by,
+		a.update_date,
+		a.del_flag,
+		a.type,
+		a.order
+	</sql>
+	
+	<select id="get" resultType="JobIsParams">
+		SELECT
+			<include refid="jobIsParamsColumns"/>
+		FROM job_is_params a
+		WHERE a.id = #{id} and del_flag = '0'
+	</select>
+	
+	<select id="findAllList" resultType="Map">
+		SELECT
+			<include refid="jobIsParamsColumns"/>
+		FROM job_is_params a
+		WHERE a.del_flag = '0' 
+		order by a.type,a.order,a.update_date
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO job_is_params (
+			id, 
+			user_name,
+			url,
+			user_password,
+			type,
+			order,
+			create_by, 
+			create_date,
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id},  
+			#{userName},  
+			#{url},  
+			#{userPassword}, 
+			#{type},
+			#{order},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE job_is_params a SET 
+			a.user_name = #{userName},
+			a.url = #{url},
+			a.user_password = #{userPassword},
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks},
+			order = #{order},
+			type = #{type}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE job_is_params SET 
+			del_flag = #{delFlag}
+		WHERE id = #{id} 
+	</update>
+	
+	<select id="findList" resultType="JobIsParams">
+		SELECT 
+			a.*,
+			u.id AS "createBy.id",
+			u.name AS "createBy.name",
+			c.name AS "createBy.company.name",
+			o.name AS "createBy.office.name"
+		FROM job_is_params a
+		JOIN sys_user u ON u.id = a.create_by
+		JOIN sys_office c ON c.id = u.company_id
+		JOIN sys_office o ON o.id = u.office_id
+		WHERE 1=1 and a.del_flag = '0' 
+		<if test="userName != null and userName != ''">
+			AND a.user_name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{userName}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{userName}+'%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%', #{userName}, '%')</if>
+		</if>
+		<if test="createBy != null and createBy.id != null and createBy.id != ''">
+			AND a.create_by = #{createBy.id}
+		</if>
+		<!-- 数据范围过滤 -->
+		${sqlMap.dsf}
+		<if test="page.pageSize!=-1" >
+			<choose>
+				<when test="page.orderBy != null and page.orderBy == 'createDate desc'">
+					ORDER BY create_date desc
+				</when>
+				<when test="page.orderBy != null and page.orderBy == 'createDate asc'">
+					ORDER BY create_date asc
+				</when>
+				<when test="page.orderBy != null and page.orderBy == 'createByName asc'">
+					ORDER BY u.name asc
+				</when>
+				<when test="page.orderBy != null and page.orderBy == 'createByName desc'">
+					ORDER BY u.name desc
+				</when>
+				<otherwise>
+					ORDER BY ${page.orderBy} 
+				</otherwise>
+			</choose>
+			<if test="dbName == 'mysql'">limit #{page.firstResult},#{page.pageSize}</if>
+		</if>
+	</select>
+	
+</mapper>

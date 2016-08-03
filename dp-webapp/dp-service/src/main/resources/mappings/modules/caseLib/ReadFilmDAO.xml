@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.caseLib.dao.ReadFilmDAO">
+    
+    <sql id="readFilmColumns">
+    	a.id, 
+		a.name, 
+		a.address, 
+		a.dates, 
+		a.org_name AS "orgName", 
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag
+    </sql>
+    
+	<select id="get" resultType="readFilm">
+		SELECT 
+			<include refid="readFilmColumns"/>
+		FROM t_read_film a
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="readFilm">
+		SELECT 
+			<include refid="readFilmColumns"/>
+		FROM t_read_film a 
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="name != null and name != ''">
+			AND a.name like CONCAT('%', #{name}, '%')
+		</if>
+		<if test="address != null and address != ''">
+			AND a.address like CONCAT('%', #{address}, '%')
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY  a.create_date,a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	<select id="findAllList" resultType="readFilm">
+		SELECT
+			<include refid="readFilmColumns"/>
+		FROM t_read_film a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		ORDER BY a.update_date
+	</select>
+	
+	<select id="findTreeList" resultType="readFilm">
+	SELECT * FROM (
+		SELECT 
+			<include refid="readFilmColumns"/> 
+			,DATE_FORMAT(a.dates,'%Y') AS "parent.id"
+		FROM t_read_film a
+			UNION all select distinct DATE_FORMAT(dates,'%Y') id,DATE_FORMAT(dates,'%Y') name,'',
+			DATE_FORMAT(dates,'%Y') dates,'','','','','','','0','0' AS "parent.id" from t_read_film group by id  
+			) b
+		WHERE b.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY b.dates DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_read_film(
+			id, 
+			name, 
+			address, 
+			dates, 
+			org_name, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{name}, 
+			#{address}, 
+			#{dates}, 
+			#{orgName},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE t_read_film SET 
+			name = #{name}, 
+			address = #{address}, 
+			dates = #{dates}, 
+			org_name = #{orgName},
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE t_read_film SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

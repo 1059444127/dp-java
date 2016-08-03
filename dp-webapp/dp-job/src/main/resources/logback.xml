@@ -1,0 +1,66 @@
+<!-- if debug set to true, context info always print
+ otherwise the contex info will print when error ocour -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false"> 
+
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">  
+     <layout class="ch.qos.logback.classic.PatternLayout">  
+       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern>  
+     </layout>  
+   </appender>  
+ 
+ <!-- 所有日志文件-->
+ <appender name="AllLog" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+   <fileNamePattern>taskLog/abcchina/all/%d{yyyy-MM-dd}.log</fileNamePattern> 
+   <maxHistory>30</maxHistory> 
+  </rollingPolicy> 
+  <encoder> 
+   <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern> 
+  </encoder> 
+ </appender>
+ 
+ <appender name="TaskLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+   <fileNamePattern>taskLog/abcchina/task/%d{yyyy-MM-dd}.log</fileNamePattern> 
+   <maxHistory>30</maxHistory>
+  </rollingPolicy> 
+  <encoder> 
+   <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern> 
+  </encoder> 
+ </appender>
+ <appender name="SendLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+   <fileNamePattern>taskLog/abcchina/send/%d{yyyy-MM-dd}.log</fileNamePattern> 
+   <maxHistory>30</maxHistory>
+  </rollingPolicy> 
+  <encoder> 
+   <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern> 
+  </encoder> 
+ </appender>
+ 
+ <appender name="SendOKLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+   <fileNamePattern>taskLog/abcchina/sendOK/%d{yyyy-MM-dd}.log</fileNamePattern> 
+   <maxHistory>30</maxHistory>
+  </rollingPolicy> 
+  <encoder> 
+   <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern> 
+  </encoder> 
+ </appender>
+ <!-- 为某个包下的所有类指定Appender -->  
+ <logger name="com.kingmed.dp.is.service" >
+  <appender-ref ref="TaskLog" />
+ </logger>
+ 
+ <logger name="com.kingmed.dp.is.util.HttpRequstService" level="debug">
+  <appender-ref ref="SendLog" />
+ </logger>
+ 
+ <logger name="com.kingmed.dp.is.job.NDPIDTriggerJob" level="info">
+  <appender-ref ref="TaskLog" />
+ </logger>
+ 
+ <root level="DEBUG"> 
+  <appender-ref ref="AllLog" />
+ </root> 
+</configuration>

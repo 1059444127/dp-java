@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elink>
+    <description>门户的方案展示定义信息</description>
+    <version>1.0.0</version>
+	<modules>
+		<!-- 
+			规定在每个style里面定义height高度。否则在每个div跨行的时候会出现div重叠问题
+		主管单位首页
+		 -->
+		 <module id="aqjcpf1">
+			<title><![CDATA[模块1]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:514px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf2">
+			<title><![CDATA[模块2]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:514px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf3">
+			<title><![CDATA[模块3]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:314px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf4">
+			<title><![CDATA[模块4]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:314px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf5">
+			<title><![CDATA[模块5]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:314px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf6">
+			<title><![CDATA[模块6]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:414px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf7">
+			<title><![CDATA[模块7]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/test]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:414px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		
+		
+		
+		<!-- 测试二 -->
+		<module id="aqjcpf13">
+			<title><![CDATA[待处理工作]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/taqjcNoticeLeft.action]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:514px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+		<module id="aqjcpf14">
+			<title><![CDATA[安全检查进度]]></title><!-- 模块的标题，允许使用 HTML -->
+			<method>AJAX</method><!-- 模块的加载方式[AJAX,INCLUDE] -->
+			<url><![CDATA[/plat/common/safeSelfSpeed.action]]></url><!-- 模块的连接地址 -->
+			<style><![CDATA[height:514px]]></style><!-- 模块DIV的样式 -->
+			<author></author><!-- 模块编写人-->
+			<description></description>
+		</module><!-- 定义一个模块 ，ID不允许重复-->
+	</modules>
+	<portlets>
+		
+		<project name="主管-首页" id="page2">
+		    <column  id="column1" style="width:70%">
+		    	<row  id="rowId1" ref="aqjcpf1"/>
+		    </column>
+		    <column  id="column2" style="width:30%" >
+		    	<row id="rowId2" ref="aqjcpf2" movable="true" closed="true" show="true" />
+		    </column>
+		    
+		     <column  id="column3" style="width:33%" >
+			    	<row id="rowId3" ref="aqjcpf3" movable="true" closed="true" show="true" />
+		    </column>
+		    <column  id="column4" style="width:34%" >
+		    	<row id="rowId4" ref="aqjcpf4" movable="true" closed="true" show="true" />
+		    </column>
+		    <column  id="column5" style="width:33%" >
+		    	<row id="rowId5" ref="aqjcpf5" movable="true" closed="true" show="true" />
+		    </column>
+		    <column  id="column6" style="width:30%" >
+		    	<row id="rowId6" ref="aqjcpf6" movable="true" closed="true" show="true" />
+		    </column>
+		    <column  id="column7" style="width:70%" >
+		    	<row id="rowId7" ref="aqjcpf7" movable="true" closed="true" show="true" />
+		    </column>
+		</project>
+		<project name="单位-首页" id="assethome">
+		    <column  id="column1" style="width:20%;">
+		    	<row  id="rowId3" ref="aqjcpf13" />
+		    </column>
+		    <column  id="column2" style="width:80%" >
+		    	<row  id="rowId4" ref="aqjcpf14"  movable="true" closed="true" show="true" />
+		    </column>
+		</project>
+	</portlets>
+</elink>	

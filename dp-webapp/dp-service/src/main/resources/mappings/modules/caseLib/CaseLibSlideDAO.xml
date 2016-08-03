@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.caseLib.dao.CaseLibSlideDAO">
+    
+	<sql id="caseLibSlideColumns">
+		a.id, 
+		a.case_lib_id AS "caseLib.id", 
+		cl.gender AS "caseLib.gender",
+		cl.aget AS "caseLib.aget",
+		a.barcode, 
+		a.antitbody_name AS "antitbodyName", 
+		a.antibody_code AS "antibodyCode", 
+		a.antibody_seq AS "antibodySeq", 
+		a.label, 
+		a.overview, 
+		a.label_with_overview AS "labelWithOverview", 
+		a.url, 
+		a.scanner,
+		a.read_film_id AS "readFilmId",
+		a.remarks,
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.del_flag AS "delFlag"
+	</sql>
+    
+	<select id="get" resultType="CaseLibSlide">
+		SELECT 
+			<include refid="caseLibSlideColumns"/>
+		FROM t_case_lib_slide a
+		left join t_case_lib cl on cl.id=a.case_lib_id
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="CaseLibSlide">
+		SELECT
+			<include refid="caseLibSlideColumns"/>
+		FROM t_case_lib_slide a
+		left join t_case_lib cl on cl.id=a.case_lib_id
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="barcode != null and barcode != ''">
+			AND a.barcode = #{barcode}
+		</if>
+		<if test="readFilmId != null and readFilmId != ''">
+			AND a.read_film_id = #{readFilmId}
+		</if>
+		<!-- 数据范围过滤 -->
+		${sqlMap.dsf}
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="CaseLibSlide">
+		SELECT
+			<include refid="caseLibSlideColumns"/>
+		FROM t_case_lib_slide a
+		left join t_case_lib cl on cl.id=a.case_lib_id
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		ORDER BY a.update_date
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_case_lib_slide(
+			id, 
+			case_lib_id, 
+			barcode, 
+			antitbody_name, 
+			antibody_code, 
+			antibody_seq, 
+			label, 
+			overview, 
+			label_with_overview, 
+			url, 
+			scanner,
+			read_film_id,
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{caseLib.id}, 
+			#{barcode}, 
+			#{antitbodyName}, 
+			#{antibodyCode}, 
+			#{antibodySeq}, 
+			#{label}, 
+			#{overview}, 
+			#{labelWithOverview}, 
+			#{url}, 
+			#{scanner},
+			#{readFilmId},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE t_case_lib_slide SET 
+			case_lib_id = #{caseLib.id}, 
+			barcode = #{barcode}, 
+			antitbody_name = #{antitbodyName}, 
+			antibody_code = #{antibodyCode}, 
+			antibody_seq = #{antibodySeq}, 
+			label = #{label}, 
+			overview = #{overview}, 
+			label_with_overview = #{labelWithOverview}, 
+			url = #{url}, 
+			scanner = #{url},
+			read_film_id = #{readFilmId},
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE t_case_lib_slide SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id} 
+	</update>
+	
+</mapper>

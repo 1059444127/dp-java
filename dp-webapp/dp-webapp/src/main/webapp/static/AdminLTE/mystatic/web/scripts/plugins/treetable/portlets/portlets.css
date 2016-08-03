@@ -1,0 +1,58 @@
+#columns td
+{
+	padding: 0 3px;
+	vertical-align: top;
+}
+
+.portlet2,.portlet
+{
+	border:solid 1px #d3dbde;
+	margin: 0 0 6px;
+}
+
+
+.portlet-placeholder {
+		border:dashed 1px #d3dbde;
+		margin: 0 1em 1em 0;
+		height: 200px;
+}
+.portlet .listtitle{cursor: move;}
+.portlet .listtitle a{cursor: pointer;}
+
+.portlet_topper
+{
+	background: #eed;
+	padding: 2px 2px;
+}
+
+.portlet_topper a
+{
+	color: #443;
+	font-weight: bold;
+}
+
+.portlet_content
+{
+	border-top: 1px solid #998;
+	padding: 10px;
+}
+
+.portlet_content p
+{
+	line-height: 150%;
+	text-align: justify;
+}
+
+.portlet_bottom
+{
+	font-size: 1px;
+	line-height: 1px;
+	overflow: hidden;
+	height: 5px;
+}
+
+.sort_placeholder
+{
+	border:dashed 1px #d3dbde;
+	width: 100%;
+}

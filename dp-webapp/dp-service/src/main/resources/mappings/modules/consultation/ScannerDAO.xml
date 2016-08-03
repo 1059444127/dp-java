@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.consultation.dao.ScannerDAO">
+    
+    <sql id="scannerColumns">
+    	a.id, 
+		a.company_id AS "companyId", 
+		a.common_point AS "commonPoint", 
+		a.scanner_code AS "scannerCode", 
+		a.mosaic,
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag
+    </sql>
+    
+	<select id="get" resultType="scanner">
+		SELECT 
+			<include refid="scannerColumns"/>
+		FROM T_SCANNER a
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="getByScannerCode" resultType="scanner">
+		SELECT 
+			<include refid="scannerColumns"/>
+		FROM T_SCANNER a
+		WHERE a.scanner_code = #{scannerCode}
+	</select>
+	
+	<select id="findList" resultType="scanner">
+		SELECT 
+			<include refid="scannerColumns"/>
+		FROM T_SCANNER a 
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY a.${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY  a.create_date,a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="findAllList" resultType="scanner">
+		SELECT 
+			<include refid="scannerColumns"/> 
+		FROM T_SCANNER a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY a.create_date,a.update_date DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO T_SCANNER(
+			id, 
+			company_id, 
+			common_point, 
+			scanner_code, 
+			mosaic, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{companyId}, 
+			#{commonPoint}, 
+			#{scannerCode}, 
+			#{mosaic},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE T_SCANNER SET 
+			company_id = #{companyId}, 
+			common_point = #{commonPoint}, 
+			scanner_code = #{scannerCode}, 
+			mosaic = #{mosaic},   
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE T_SCANNER SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

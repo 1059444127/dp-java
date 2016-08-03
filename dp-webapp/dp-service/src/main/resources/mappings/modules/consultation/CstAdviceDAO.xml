@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.consultation.dao.CstAdviceDAO">
+    
+    <sql id="cstAdviceColumns">
+    	a.id, 
+		a.case_id AS caseId, 
+		a.content, 
+		a.src_app AS srcApp, 
+		a.dst_app AS dstApp, 
+		a.send_status AS sendStatus, 
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag
+    </sql>
+    
+	<select id="get" resultType="cstAdvice">
+		SELECT 
+			<include refid="cstAdviceColumns"/>
+		FROM T_CST_ADVICE a
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="cstAdvice">
+		SELECT 
+			u.name AS "createBy.name",
+			<include refid="cstAdviceColumns"/>
+		FROM T_CST_ADVICE a 
+		LEFT JOIN SYS_USER u ON u.id = a.create_by
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		<if test="sendStatus != null and sendStatus != ''">
+			AND a.send_status = #{sendStatus}
+		</if>
+		<if test="caseId != null and caseId != ''">
+			AND a.case_id = #{caseId}
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY a.${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY  a.create_date,a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="findAllList" resultType="cstAdvice">
+		SELECT 
+			<include refid="cstAdviceColumns"/> 
+		FROM T_CST_ADVICE a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY a.create_date,a.update_date DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO T_CST_ADVICE(
+			id, 
+			case_id, 
+			content, 
+			src_app, 
+			dst_app, 
+			send_status, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{caseId}, 
+			#{content}, 
+			#{srcApp}, 
+			#{dstApp}, 
+			#{sendStatus},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE T_CST_ADVICE SET 
+			case_id = #{caseId}, 
+			content = #{content}, 
+			src_app = #{srcApp}, 
+			dst_app = #{dstApp}, 
+			send_status = #{sendStatus},  
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE T_CST_ADVICE SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

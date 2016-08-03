@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.caseLib.dao.RecentVisitDAO">
+    
+    <sql id="recentVisitColumns">
+    	a.id, 
+		a.user_id AS "userId", 
+		a.ip, 
+		a.lib_slide_id AS "caseLibSlide.id",
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag
+    </sql>
+    
+	<select id="get" resultType="recentVisit">
+		SELECT 
+			<include refid="recentVisitColumns"/>
+		FROM t_recent_visit a
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="recentVisit">
+		SELECT 
+			<include refid="recentVisitColumns"/>
+		FROM t_recent_visit a 
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="caseLibSlide != null and caseLibSlide.id != null and caseLibSlide.id !=''">
+			AND a.lib_slide_id = #{caseLibSlide.id}
+		</if>
+		<choose>
+			<when test="page !=null">
+				ORDER BY a.create_date 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY  a.create_date,a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	<select id="findListCount" resultType="int">
+		SELECT count(*) 
+		FROM t_recent_visit a 
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="caseLibSlide != null and caseLibSlide.id != null and caseLibSlide.id !=''">
+			AND a.lib_slide_id = #{caseLibSlide.id}
+		</if>
+	</select>
+	
+	<select id="findLateList" resultType="recentVisit">
+		SELECT cls.overview AS "caseLibSlide.overview",cls.antitbody_name AS "caseLibSlide.antitbodyName",cls.case_lib_id AS "caseLibSlide.caseLibId",
+			<include refid="recentVisitColumns"/>
+		FROM t_recent_visit a 
+		left join t_case_lib_slide cls on cls.id=a.lib_slide_id
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="caseLibSlide != null and caseLibSlide != ''">
+			AND a.lib_slide_id = #{caseLibSlide.id}
+		</if>
+		<if test="userId != null and userId != ''">
+			AND a.user_id = #{userId}
+		</if>
+		ORDER BY a.create_date desc 
+		limit 0,5
+	</select>
+	
+	<select id="findAllList" resultType="recentVisit">
+		SELECT
+			<include refid="recentVisitColumns"/>
+		FROM t_recent_visit a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		ORDER BY a.update_date desc
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_recent_visit(
+			id, 
+			user_id, 
+			ip, 
+			lib_slide_id, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{userId}, 
+			#{ip}, 
+			#{caseLibSlide.id}, 
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE t_recent_visit SET 
+			user_id = #{userId}, 
+			ip = #{ip}, 
+			lib_slide_id = #{caseLibSlide.id},
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE t_recent_visit SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

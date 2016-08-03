@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.consultation.dao.SlideDAO">
+    
+    <sql id="slideColumns">
+    	a.id, 
+		a.barcode,  
+		a.label, 
+		a.overview, 
+		a.label_with_overview AS 'labelWithOverview', 
+		a.url, 
+		a.scanner_model AS 'scannerModel', 
+		a.create_by AS "createBy.id", 
+		a.create_date, 
+		a.update_by AS "updateBy.id",
+		a.update_date, 
+		a.remarks, 
+		a.del_flag
+    </sql>
+    
+	<select id="get" resultType="slide">
+		SELECT 
+			<include refid="slideColumns"/>
+		FROM t_slide a
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="slide">
+		SELECT 
+			<include refid="slideColumns"/>
+		FROM t_slide a 
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY a.${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY  a.create_date,a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="findAllList" resultType="slide">
+		SELECT 
+			<include refid="slideColumns"/> 
+		FROM t_slide a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY a.create_date,a.update_date DESC
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_slide(
+			id, 
+			barcode, 
+			label, 
+			overview, 
+			label_with_overview, 
+			url, 
+			scanner_model, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{barcode}, 
+			#{label}, 
+			#{overview}, 
+			#{labelWithOverview}, 
+			#{url}, 
+			#{scannerModel},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="delete">
+		UPDATE t_slide SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

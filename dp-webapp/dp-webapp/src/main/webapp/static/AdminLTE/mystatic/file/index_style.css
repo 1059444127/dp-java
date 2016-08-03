@@ -1,0 +1,149 @@
+body{background-color:#fafafa}
+a{text-decoration:none;color:#696b6e}
+.title{border-bottom:2px solid #3099d8}
+.title h4{cursor:pointer;float:left;color:#4d4a4a}
+.tab_cont{display:none}
+.active{display:block}
+.wp74,.wp44,.wpl65{float:left;box-sizing:border-box}
+.wp74{width:74%}
+.wp44{width:44%}
+.wpl35,.wpl29{float:left;padding-right:20px;box-sizing:border-box}
+.wpl65{width:64.87%}
+.wpl35{width:35.13%}
+.wpl29{width:29%}.wpr26{float:right;width:26%;padding-left:20px;box-sizing:border-box}.banner{padding:15px 0 20px 0}.r_arrow{float:right;margin-top:10px;color:#4d4a4a;padding-right:20px;font-size:12px;background:url("../img/icon_more.png") no-repeat center right}
+/*热点*/
+.focus{position:relative}
+.hot_img{width:650px;height:310px;position:absolute;top:15px;left:0}
+.hot_info{width:100%;height:310px;padding-left:670px;box-sizing:border-box}
+.hot_text{background:#e9e8e8 url("../img/bg_focus_1.jpg") no-repeat right bottom}
+.hot_title{font-size:16px;color:#4575aa;padding:6px 0 6px 10px}
+.hot_info h3{height:26px;line-height:26px;overflow:hidden}
+.hot_info p{height:60px;font-size:12px;color:#8f8f8f;overflow:hidden;line-height:20px}
+.hot_ul li{padding-left:15px;line-height:22px;background:url("../img/ul_dot.jpg") no-repeat left center;box-sizing:border-box;font-size:14px;height:22px;overflow:hidden}
+.hot_ul li a{font-size:14px;color:#2c2d32}
+/*会议活动*/
+.meeting_activity{position:relative;height:180px;padding-top:10px;margin-bottom:16px}
+.meeting_activity img{position:absolute;width:242px;height:180px}
+.meeting_cont{padding-left:262px}
+.scroll_horizontal{position:relative;overflow:hidden;width:494px;height:180px}
+.scroll_horizontal .box{overflow:hidden;position:relative;width:494px;height:180px}
+.scroll_horizontal .list{overflow:hidden;width:9999px}
+.scroll_horizontal .list li{float:left;width:494px}
+.next,.prev{position:absolute;top:-1px;width:31px;height:183px;z-index:1;cursor:pointer;opacity:.1}
+.next{right:0;background:url("../img/icon_rightbtn.png") no-repeat right center}
+.prev{left:0;background:url("../img/icon_leftbtn.png") no-repeat left center}
+.scroll_horizontal:hover .next,.scroll_horizontal:hover .prev{opacity:1}
+.date_cont{float:left;width:50%;position:relative;height:80px;padding:5px 0}
+.date_img{position:absolute;width:74px;height:82px;background:url("../img/bg_date_1.png") no-repeat top left;padding:2px 0 10px 0;box-sizing:border-box}
+.date_city,.date_city4,.date_city5{height:22px;line-height:22px;text-align:center;color:#fff;overflow:hidden}
+.date_city{font-size:16px}
+.date_city4{font-size:14px}
+.date_city5{font-size:12px}
+.date_month{padding-top:4px;padding-left:7px;height:14px}
+.date_month,.date_font{font-size:12px;color:#4a4a4a}
+.date_day{height:30px;font-size:28px;color:#d77979;text-align:right;padding-right:8px}
+.date_text{padding-left:84px;padding-right:10px}
+.date_text h6{height:40px;overflow:hidden;line-height:20px;font-weight:bold}
+.date_text p{height:18px;overflow:hidden;line-height:18px;font-size:12px;color:#999}
+/*政策公告*/
+.policy_announcements li{padding-top:12px}
+.policy_announcements li h6{position:relative;padding-left:30px;font-weight:bold;height:20px;line-height:20px;overflow:hidden}
+.policy_announcements li h6 span{position:absolute;left:0;top:0;color:#fff;text-align:center;background-color:#3099d8;width:20px}
+.policy_announcements li p{height:40px;line-height:20px;overflow:hidden;font-size:12px;color:#696b6e}
+/*行业资讯*/
+.industry{position:relative;height:134px;overflow:hidden;margin-top:10px}
+.industry h3{height:26px;line-height:26px;overflow:hidden}
+.industry img{position:absolute;left:0;width:238px;height:134px}
+.industry_text{padding-left:248px;font-size:14px;color:#696b6e}
+.industry_text p{line-height:19px}
+.detail2{color:#b84f4f}
+.industry_information ul{padding-top:4px;zoom:1}
+.industry_information ul li{float:left;width:50%;height:24px;line-height:24px;padding-right:10px;overflow:hidden;font-size:14px;color:#333}
+.industry_information ul li span{padding-right:4px}
+/*人才招聘*/
+.hiring li{position:relative;height:76px;overflow:hidden;border-bottom:1px dashed #bcc0c4;padding:10px 0}
+.hiring li .city_font3,.hiring li .city_font4,.hiring li .city_font5,.hiring li .city{position:absolute;left:0;top:12px;width:50px;height:50px;text-align:center;background-color:#82d2ac;color:#fff;box-sizing:border-box;overflow:hidden}
+.hiring li .city{line-height:50px;text-align:center;font-size:16px}
+.hiring li .city a,.hiring li .city_font3 a,.hiring li .city_font4 a,.hiring li .city_font5 a{color:#fff}
+.hiring li .city_font3{line-height:50px;font-size:14px}
+.hiring li .city_font4{padding:7px;line-height:18px;font-size:14px}
+.hiring li .city_font5{padding:7px 0;line-height:18px;font-size:14px}
+.hiring li .text{width:100%;height:55px;padding-left:60px;box-sizing:border-box;font-size:12px}
+.hiring li .text h6{height:20px;line-height:20px;overflow:hidden}
+.hiring li .text p{height:16px;line-height:16px;overflow:hidden}
+/*医学资源*/
+.resource_cont,.resource_cont2{width:24%;height:290px;overflow:hidden;float:left;padding-top:10px}
+.resource_cont{margin-right:1.33%}
+.resource_cont2{margin-right:0}
+.resource h5{font-weight:bold;padding-top:10px;padding-bottom:5px;text-decoration:underline;color:#4785b5}
+.resource li{height:34px;line-height:34px;overflow:hidden;font-size:14px}
+.res_box,.res_box1{position:relative;height:116px;overflow:hidden}
+.res_box1 img{position:absolute;top:0;left:0;width:auto;height:116px}
+.res_box img{position:absolute;top:0;left:0;width:132px;height:116px}
+.res_box .res_text{padding-left:140px;line-height:24px}
+.res_box1 .res_text{padding-left:92px;line-height:24px}
+.res_text1{font-size:14px;color:#4d4b4b;font-weight:bold}
+.res_text2{font-size:12px;color:#999}
+.res_text3{font-size:12px;color:#333}
+.orange{color:#f26527}
+.video_img{width:100%;height:150px;overflow:hidden}
+.video_text li{padding-left:20px;background:url("../img/icon_video.png") no-repeat left center}
+.online_lecture{position:relative}
+.coming{display:none;position:absolute;top:20px;left:0;right:0;bottom:8px;text-align:center;background:url("../img/dialog_bg2.png");font-size:24px;color:#fff;padding:100px 0 0 0;line-height:36px}
+.online_lecture:hover .coming{display:block}
+/*病例分析*/
+.case_analysis{height:256px;overflow:hidden}
+.case_analysis li{height:31px;line-height:31px;overflow:hidden;font-size:14px;color:#333}
+.case_analysis li span{padding-right:6px}
+/*名医专栏*/
+.expert_box{position:relative;height:290px;padding-top:10px}
+.expert_box .expert_text{position:absolute;top:10px;left:0;width:228px}
+.expert_box .expert_text{height:290px;overflow:hidden}
+.expert_img{width:238px;height:156px}
+.expert_img_text{position:absolute;top:106px;left:0;z-index:1;width:228px;height:30px;color:#fff;line-height:30px;background:url("../img/dialog_bg.png")}
+.expert_text_box p{text-indent:2em;color:#7b7b7b;font-size:12px;line-height:22px;padding-top:2px}
+.e_name1{color:#3099d8}
+.e_name2{font-size:14px;color:#3099d8;font-weight:bold}
+.detail{color:#b84f4f;background:url("../img/icon_detail.png") no-repeat right center;padding-right:16px}
+.expert_ul_text{padding-left:238px}
+.expert_ul_text li{height:72px;overflow:hidden;line-height:18px;background:url("../img/icon_1.png") no-repeat left 4px;padding-left:20px;font-size:12px}
+/*医院指南*/
+.hos_guide{position:relative;height:130px;padding-top:10px}
+.hos_guide img{position:absolute;top:10px;left:0;width:112px;height:130px}
+.hos_guide .hos_img_text{position:absolute;bottom:0;left:0;width:112px;height:30px;font-size:14px;color:#fff;text-align:center;line-height:30px;background-color:rgba(0,0,0,0.5);z-index:1}
+.hos_guide ul{padding-left:118px}
+.hos_guide li{font-size:14px;padding-left:12px;line-height:19px;background:url("../img/icon_dot1.png") no-repeat left center}
+/*健康医疗*/
+.health_care{height:300px;overflow:hidden}
+.health_care ul{height:210px}
+.health_care li{height:30px;line-height:30px;font-size:14px;padding-left:20px;background:url("../img/icon_2.png") no-repeat left center}
+.tab_btn p{float:left;height:32px;line-height:32px}
+.tab_btn p a{color:#999;font-weight:bold}
+.tab_btn p.on a{color:#4785b5}
+/*百科知识*/
+.knowledge{height:224px}
+.knowledge li{float:left;width:33.333%;height:110px;padding:12px 8px 0 0;overflow:hidden}
+.kl_text{height:84px;overflow:hidden;font-size:12px}
+.kl_img{width:140px;height:100px;float:left;margin-right:16px}
+/*学术名词*/
+.academic_n{height:218px;line-height:24px;padding-top:8px;font-size:14px;overflow:hidden}
+.academic_n a{color:#313540}
+.academic_n span{height:18px;padding:0 12px;background:url("../img/vertical_bar.jpg") no-repeat center}
+/*专家问答*/
+.answer{background-color:#f3f3f3;padding:6px 10px 8px 10px;box-sizing:border-box}
+.answer_block li{float:left;color:#151515;font-size:14px;margin-top:6px}
+.answer_block li a{color:#151515}
+.answer_block li span{color:#4a98c4;padding:0 14px;font-size:12px}
+.answer .text{border-top:1px dashed #bcc0c4}
+.answer .text:first-child{border-top:0}
+.answer .text li{width:25%;height:36px;float:left;color:#4d4b4b;font-size:14px;padding:8px 20px 8px 0}
+/*合作伙伴*/
+.partners{padding-top:10px}
+.partners h4 a{color:#5185bd}
+.partners li{float:left;width:154px;margin-left:18px}
+.partners li:first-child{margin-left:0}
+.partners li img{border:1px solid #e0e0e1}
+/*友情链接*/
+.friendly_link{padding:10px 0}
+.friendly_link span{color:#4a98c4;font-size:16px}
+.friendly_link a{color:#d5af59;font-size:14px;margin:0 3px 0 0;text-decoration:underline;padding-left:3px}

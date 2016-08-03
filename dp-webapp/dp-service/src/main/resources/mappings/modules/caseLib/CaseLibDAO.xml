@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.caseLib.dao.CaseLibDAO">
+    
+	<sql id="caseLibColumns">
+		a.id, 
+		a.lib_no AS libNo, 
+		a.user_id AS userId, 
+		a.office_id AS officeId, 
+		a.area_id AS areaId, 
+		a.case_id AS caseId, 
+		a.gender, 
+		a.aget, 
+		a.age_unit AS ageUnit, 
+		a.cli_diag AS cliDiag, 
+		a.cli_mas AS cliMas, 
+		a.ope_find AS opeFind, 
+		a.bio_org AS bioOrg, 
+		a.dia, 
+		a.lib_create_type AS libCreateType, 
+		a.lib_state AS libState, 
+		a.pat_type_id AS patTypeId, 
+		a.icd_no AS icdNo, 
+		a.tag, 
+		a.lib_submit_by AS libSubmitBy, 
+		a.lib_submit_date AS libSubmitDate, 
+		a.lib_audit_by AS libAuditBy, 
+		a.lib_audit_date AS libAuditDate, 
+		a.src_app AS srcApp, 
+		a.src_env AS srcEnv, 
+		a.src_app_version AS srcAppVersion,
+		a.history,
+		a.hospital,
+		a.cli_data AS cliData,
+		a.gen_desc AS genDesc,
+		a.remarks,
+		a.create_by AS "createBy.id",
+		a.create_date,
+		a.update_by AS "updateBy.id",
+		a.update_date,
+		a.del_flag
+	</sql>
+    
+	<select id="get" resultType="CaseLib">
+		SELECT cs.overview AS "caseLibSlide.overview",cs.id AS "caseLibSlide.id",
+			<include refid="caseLibColumns"/>
+		FROM t_case_lib a
+		left join t_case_lib_slide cs on a.id=cs.case_lib_id
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="CaseLib">
+		SELECT cs.overview AS "caseLibSlide.overview",cs.id AS "caseLibSlide.id",cs.label AS "caseLibSlide.label",
+			<include refid="caseLibColumns"/>
+		FROM t_case_lib a
+		left join t_case_lib_slide cs on a.id=cs.case_lib_id
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="gender != null and gender != ''">
+			AND a.gender = #{gender}
+		</if>
+		<if test="start_aget != null and start_aget != ''">
+			AND a.aget &gt;= #{start_aget}
+		</if>
+		<if test="end_aget != null and end_aget != ''">
+			AND a.aget &lt;= #{end_aget}
+		</if>
+		<if test="content != null and content != ''">
+			AND (a.ope_find like CONCAT('%', #{content}, '%')
+			or a.history like CONCAT('%', #{content}, '%') 
+			or a.hospital like CONCAT('%', #{content}, '%') )
+		</if>
+		<if test="opeFind != null and opeFind != ''">
+			AND a.ope_find like CONCAT('%', #{opeFind}, '%')
+		</if>
+		<if test="hospital != null and hospital != ''">
+			AND a.hospital like CONCAT('%', #{hospital}, '%')
+		</if>
+		<if test="history != null and history != ''">
+			AND a.history like CONCAT('%', #{history}, '%')
+		</if>
+		
+		<if test="parentIds != null and parentIds != ''">
+			AND a.pat_type_id in (select id from t_pat_type where parent_ids like concat('%', #{parentIds}, '%') or id = #{parentIds})
+		</if>
+		<!-- 数据范围过滤 -->
+		${sqlMap.dsf}
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY a.${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="CaseLib">
+		SELECT
+			<include refid="caseLibColumns"/>
+		FROM t_case_lib a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		ORDER BY a.update_date
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_case_lib(
+			id, 
+			lib_no, 
+			user_id, 
+			office_id, 
+			area_id, 
+			case_id, 
+			gender, 
+			aget, 
+			age_unit, 
+			cli_diag, 
+			cli_mas, 
+			ope_find, 
+			bio_org, 
+			dia, 
+			lib_create_type, 
+			lib_state, 
+			pat_type_id, 
+			icd_no, 
+			tag, 
+			lib_submit_by, 
+			lib_submit_date, 
+			lib_audit_by, 
+			lib_audit_date, 
+			src_app, 
+			src_env, 
+			src_app_version, 
+			history,
+			hospital,
+			cli_data,
+			gen_desc,
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{libNo}, 
+			#{userId}, 
+			#{officeId}, 
+			#{areaId}, 
+			#{caseId}, 
+			#{gender}, 
+			#{aget}, 
+			#{ageUnit}, 
+			#{cliDiag}, 
+			#{cliMas}, 
+			#{opeFind}, 
+			#{bioOrg}, 
+			#{dia}, 
+			#{libCreateType}, 
+			#{libState}, 
+			#{patTypeId}, 
+			#{icdNo}, 
+			#{tag}, 
+			#{libSubmitBy}, 
+			#{libSubmitDate}, 
+			#{libAuditBy}, 
+			#{libAuditDate}, 
+			#{srcApp}, 
+			#{srcEnv}, 
+			#{srcAppVersion}, 
+			#{history},
+			#{hospital},
+			#{cliData},
+			#{genDesc},
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE t_case_lib SET 
+			lib_no = #{libNo}, 
+			user_id = #{userId}, 
+			office_id = #{officeId}, 
+			area_id = #{areaId}, 
+			case_id = #{caseId}, 
+			gender = #{gender}, 
+			aget = #{aget}, 
+			age_unit = #{ageUnit}, 
+			cli_diag = #{cliDiag}, 
+			cli_mas = #{cliMas}, 
+			ope_find = #{opeFind}, 
+			bio_org = #{bioOrg}, 
+			dia = #{dia}, 
+			lib_create_type = #{libCreateType}, 
+			lib_state = #{libState}, 
+			pat_type_id = #{patTypeId}, 
+			icd_no = #{icdNo}, 
+			tag = #{tag}, 
+			lib_submit_by = #{libSubmitBy}, 
+			lib_submit_date = #{libSubmitDate}, 
+			lib_audit_by = #{libAuditBy}, 
+			lib_audit_date = #{libAuditDate}, 
+			src_app = #{srcApp}, 
+			src_env = #{srcEnv}, 
+			src_app_version = #{srcAppVersion},
+			history = #{history},
+			hospital = #{hospital},
+			cli_data = #{cliData},
+			gen_desc = #{genDesc},
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE t_case_lib SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id} 
+	</update>
+	
+</mapper>

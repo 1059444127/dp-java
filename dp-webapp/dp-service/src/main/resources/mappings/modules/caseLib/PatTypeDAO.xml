@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.caseLib.dao.PatTypeDAO">
+    
+	<sql id="patTypeColumns">
+		a.id, 
+		a.parent_id AS "parent.id", 
+		a.parent_ids AS "parentIds", 
+		a.name, 
+		a.sort, 
+		a.code, 
+		a.type, 
+		a.grade,
+		a.remarks,
+		a.create_by AS "createBy.id",
+		a.create_date,
+		a.update_by AS "updateBy.id",
+		a.update_date,
+		a.del_flag,
+		p.name AS "parent.name"
+	</sql>
+	
+	<sql id="patTypeJoins">
+		LEFT JOIN t_pat_type p ON p.id = a.parent_id 
+	<!-- 暂定为bug -->
+<!-- 		LEFT JOIN t_pat_type p ON p.id = a.parent_id -->
+    </sql>
+    
+	<select id="get" resultType="PatType">
+		SELECT
+			<include refid="patTypeColumns"/>
+		FROM t_pat_type a
+		<include refid="patTypeJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="PatType">
+		SELECT
+			<include refid="patTypeColumns"/>
+		FROM t_pat_type a
+		<include refid="patTypeJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		<if test="type != null and type != ''">
+			AND a.type = #{type}
+		</if>
+		<if test="name != null and name != ''">
+			AND a.name like CONCAT('%', #{name}, '%')
+		</if>
+		<if test="parentIds != null and parentIds != ''">
+			AND (a.parent_ids like CONCAT('%', #{parentIds}, '%') or a.id = #{parentIds})
+		</if>
+		<!-- 数据范围过滤 -->
+		${sqlMap.dsf}
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy} 
+				limit #{page.firstResult},#{page.pageSize}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="PatType">
+		SELECT
+			<include refid="patTypeColumns"/>
+		FROM t_pat_type a
+		<include refid="patTypeJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL}
+		ORDER BY a.update_date
+	</select>
+	
+	<select id="findByParentIdsLike" resultType="PatType">
+		SELECT
+			a.id,
+			a.parent_id AS "parent.id",
+			a.parent_ids
+		FROM t_pat_type a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} AND a.parent_ids LIKE #{parentIds}
+		ORDER BY a.update_date
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO t_pat_type(
+			id, 
+			parent_id, 
+			parent_ids, 
+			name, 
+			sort, 
+			code, 
+			type, 
+			grade, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag
+		) VALUES (
+			#{id}, 
+			#{parent.id}, 
+			#{parentIds}, 
+			#{name}, 
+			#{sort}, 
+			#{code}, 
+			#{type}, 
+			#{grade}, 
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE t_pat_type SET 
+			parent_id = #{parent.id}, 
+			parent_ids = #{parentIds}, 
+			name = #{name},
+			sort = #{sort}, 
+			code = #{code},
+			type = #{type}, 
+			grade = #{grade},
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateParentIds">
+		UPDATE t_pat_type SET 
+			parent_id = #{parent.id}, 
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE t_pat_type SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id} OR parent_ids LIKE 
+					<if test="dbName == 'oracle'">'%,'||#{id}||',%'</if>
+					<if test="dbName == 'mssql'">'%,'+#{id}+',%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%,', #{id}, ',%')</if>
+	</update>
+	
+</mapper>

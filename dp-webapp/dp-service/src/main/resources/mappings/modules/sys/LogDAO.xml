@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingmed.dp.modules.sys.dao.LogDAO">
+    
+	<select id="findList" resultType="Log">
+		SELECT 
+			a.*,
+			u.id AS "createBy.id",
+			u.name AS "createBy.name",
+			c.name AS "createBy.company.name",
+			o.name AS "createBy.office.name"
+		FROM sys_log a
+		JOIN sys_user u ON u.id = a.create_by
+		JOIN sys_office c ON c.id = u.company_id
+		JOIN sys_office o ON o.id = u.office_id
+		WHERE 1=1 
+		<if test="beginDate != null and endDate != null">
+			and a.create_date BETWEEN #{beginDate} AND #{endDate} 
+		</if>
+		<if test="title != null and title != ''">
+			AND a.title LIKE 
+					<if test="dbName == 'oracle'">'%'||#{title}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{title}+'%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%', #{title}, '%')</if>
+		</if>
+		<if test="createBy != null and createBy.id != null and createBy.id != ''">
+			AND a.create_by = #{createBy.id}
+		</if>
+		<if test="requestUri != null and requestUri != ''">
+			AND a.request_uri LIKE 
+					<if test="dbName == 'oracle'">'%'||#{requestUri}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{requestUri}+'%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%', #{requestUri}, '%')</if>
+		</if>
+		<if test="exception != null and exception != ''">
+			AND a.type = #{TYPE_EXCEPTION}
+		</if>
+		<!-- 数据范围过滤 -->
+		${sqlMap.dsf}
+		<if test="page.pageSize!=-1" >
+			<choose>
+				<when test="page.orderBy != null and page.orderBy == 'createDate desc'">
+					ORDER BY create_date desc
+				</when>
+				<when test="page.orderBy != null and page.orderBy == 'createDate asc'">
+					ORDER BY create_date asc
+				</when>
+				<when test="page.orderBy != null and page.orderBy == 'createByName asc'">
+					ORDER BY u.name asc
+				</when>
+				<when test="page.orderBy != null and page.orderBy == 'createByName desc'">
+					ORDER BY u.name desc
+				</when>
+				<otherwise>
+					ORDER BY ${page.orderBy} 
+				</otherwise>
+			</choose>
+			<if test="dbName == 'mysql'">limit #{page.firstResult},#{page.pageSize}</if>
+		</if>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sys_log(
+			id, 
+			type, 
+			title,
+			create_by, 
+			create_date, 
+			remote_addr, 
+			user_agent, 
+			request_uri, 
+			method, 
+			params, 
+			exception
+		) VALUES (
+			#{id}, 
+			#{type}, 
+			#{title}, 
+			#{createBy.id}, 
+			#{createDate}, 
+			#{remoteAddr}, 
+			#{userAgent}, 
+			#{requestUri}, 
+			#{method}, 
+			#{params}, 
+			#{exception}
+		)
+	</insert>
+	
+</mapper>

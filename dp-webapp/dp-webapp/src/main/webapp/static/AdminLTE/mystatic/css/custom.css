@@ -1,0 +1,47 @@
+/*侧边switch*/
+.switch {
+	height: 100%;
+	width: 10px;
+}
+
+.switch #arr{
+	/* background: url("../images/Switch_open.jpg") no-repeat center center; */
+/* 	background-color: #D1E9E9; */
+}
+
+.inner {
+	height: 100%;
+	width: 100%;
+}
+
+body{
+	  width:auto;
+      margin-left:1px;
+      font-family:Arial, Helvetica, sans-serif; 
+/*       text-transform:uppercase */
+}
+.content table{
+	font-size:14px;
+}
+.breadcrumb li{
+	font-size:14px;
+}
+.ztree span{
+    margin-left:1px;
+	font-size:14px;
+}
+/*列表的最小宽度   以适应手机访问*/
+.minWidthM{
+	min-width:700px;
+}
+/*搜索区域样式设置*/
+.form-group label.padding {
+	padding-right: 0px;
+	text-align: right;
+	margin-top: 7px;
+	padding-bottom: 7px;
+}
+.form-group div.padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
