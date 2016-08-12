@@ -21,6 +21,8 @@ import com.kingmed.dp.gateway.command.UsersCommand;
 import com.kingmed.dp.gateway.dto.CstCaseDto;
 import com.kingmed.dp.gateway.dto.ParamsDto;
 import com.kingmed.dp.gateway.dto.ProjectParamDto;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -29,7 +31,7 @@ import com.kingmed.dp.gateway.dto.ProjectParamDto;
 @RequestScoped
 @Path("/cst")
 public class DocumentService {
-	
+
     private final HttpServletRequest request;
     private final HttpServletResponse response;
 
@@ -62,18 +64,18 @@ public class DocumentService {
         //解析上传结果
         return Response.ok(fs).build();
     }
-    
+
     @GET
     @Path("/case/slide/snapshot")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getFileName() {
-    	
+
     	ParamsDto params = new ParamsDto(request,new String[]{"testId","barcode","antiBody"});
         String fs = new FileNameCommand(params).execute();
         //解析上传结果
         return Response.ok(fs).build();
     }
-    
+
     @GET
     @Path("/dr")
     @Produces(MediaType.APPLICATION_JSON)
@@ -81,7 +83,9 @@ public class DocumentService {
     	ParamsDto params = new ParamsDto(request,new String[]{});
         String fs = new UsersCommand(params).execute();
         //解析上传结果
-        return Response.ok(fs).build();
+        //return Response.ok(fs).build();
+				return Response.ok(fs).header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON + ";charset=UTF-8").build();
+
     }
 
 }

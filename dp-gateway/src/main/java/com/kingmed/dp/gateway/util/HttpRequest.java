@@ -16,9 +16,9 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public class HttpRequest {
-    
-	
-	
+
+
+
 	/**
 	 * 登陆返回sessionId
 	 * @param url 登陆地址
@@ -27,7 +27,7 @@ public class HttpRequest {
 	 */
 	public static String postMethodLogin(String url,Map<String,Object> map){
         PostMethod post = new PostMethod(url);
-        post.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8"); 
+        post.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
         NameValuePair[] param = new NameValuePair[map.size()];
         int i = 0;
 		for( Map.Entry<String, Object> entry:map.entrySet()){
@@ -35,25 +35,25 @@ public class HttpRequest {
 			i++;
 		}
         HttpMethodParams params = new HttpMethodParams();
-        
+
         post.setParams(params);
         post.setRequestBody(param);
-        StringBuffer tmpcookies = new StringBuffer("");  
+        StringBuffer tmpcookies = new StringBuffer("");
         HttpClient client = new HttpClient();
         try {
-        	 // 设置 HttpClient 接收 Cookie,用与浏览器一样的策略  
-        	client.getParams().setCookiePolicy(  
-                    CookiePolicy.BROWSER_COMPATIBILITY); 
-            
+        	 // 设置 HttpClient 接收 Cookie,用与浏览器一样的策略
+        	client.getParams().setCookiePolicy(
+                    CookiePolicy.BROWSER_COMPATIBILITY);
+
         	client.executeMethod(post);
-			
-			 // 获得登陆后的 Cookie  
-            Cookie[] cookies = client.getState().getCookies();  
-            
-            for (Cookie c : cookies) {  
-                tmpcookies.append(c.toString() + ";");  
-            }  
-            
+
+			 // 获得登陆后的 Cookie
+            Cookie[] cookies = client.getState().getCookies();
+
+            for (Cookie c : cookies) {
+                tmpcookies.append(c.toString() + ";");
+            }
+
 		} catch (HttpException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -62,7 +62,7 @@ public class HttpRequest {
         post.releaseConnection();
         return tmpcookies.toString();
     }
-	
+
 	/**
 	 * 通过登陆cookie  进行后续操作
 	 * @param url
@@ -73,7 +73,7 @@ public class HttpRequest {
 	public static String postMethod(String url,Map<String,Object> map,String cookies){
 		String result = "";
         PostMethod post = new PostMethod(url);
-        post.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8"); 
+        post.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
         NameValuePair[] param = new NameValuePair[map.size()];
         int i = 0;
 		for( Map.Entry<String, Object> entry:map.entrySet()){
@@ -81,16 +81,16 @@ public class HttpRequest {
 			i++;
 		}
         HttpMethodParams params = new HttpMethodParams();
-        
+
         post.setParams(params);
         post.setRequestBody(param);
-        // 每次访问需授权的网址时需带上前面的 cookie 作为通行证  
-        post.setRequestHeader("cookie", cookies);    
+        // 每次访问需授权的网址时需带上前面的 cookie 作为通行证
+        post.setRequestHeader("cookie", cookies);
         HttpClient client = new HttpClient();
         try {
         	client.executeMethod(post);
-			// 打印出返回数据，检验一下是否成功  
-            result = post.getResponseBodyAsString(); 
+			// 打印出返回数据，检验一下是否成功
+            result = post.getResponseBodyAsString();
 		} catch (HttpException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -99,10 +99,10 @@ public class HttpRequest {
         post.releaseConnection();
         return result;
     }
-    
+
 	 /**
      * 向指定URL发送GET方法的请求
-     * 
+     *
      * @param url
      *            发送请求的URL
      * @param param
@@ -124,6 +124,8 @@ public class HttpRequest {
             URLConnection connection = realUrl.openConnection();
             // 设置通用的请求属性
             connection.setRequestProperty("accept", "*/*");
+            connection.setRequestProperty("Accept-Charset", "UTF-8");
+            //connection.setRequestProperty("Accept-Charset", "GBK");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
@@ -137,7 +139,7 @@ public class HttpRequest {
             }
             // 定义 BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
+                    connection.getInputStream(),"utf-8"));
             String line;
             while ((line = in.readLine()) != null) {
                 result += line;
@@ -158,5 +160,5 @@ public class HttpRequest {
         }
         return result;
     }
-	
+
 }
