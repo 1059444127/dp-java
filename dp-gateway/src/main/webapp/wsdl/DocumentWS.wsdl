@@ -36,7 +36,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:part>
 
-      <wsdl:part name="parameters" type="apachesoap:Map">
+      <wsdl:part name="parameters" type="xsd:string">
 
       </wsdl:part>
 
@@ -64,7 +64,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:part>
 
-      <wsdl:part name="parameters" type="apachesoap:Map">
+      <wsdl:part name="parameters" type="xsd:string">
 
       </wsdl:part>
 
@@ -236,7 +236,7 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdl:port binding="impl:DocumentWSSoapBinding" name="DocumentWS">
 
-         <wsdlsoap:address location="http://localhost:8080/dp/services/DocumentWS"/>
+         <wsdlsoap:address location="http://epathology.kingmed.com.cn:99/dp/services/DocumentWS"/>
 
       </wsdl:port>
 

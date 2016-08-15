@@ -27,7 +27,7 @@ public class DocumentWSSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setName("updateDocumentByDomainUser");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "documentId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "parameters"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://xml.apache.org/xml-soap", "Map"), java.util.HashMap.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "parameters"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "domainUserId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -50,7 +50,7 @@ public class DocumentWSSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setName("createDocumentByDomainUser");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "formName"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "parameters"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://xml.apache.org/xml-soap", "Map"), java.util.HashMap.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "parameters"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "domainUserId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -206,7 +206,7 @@ public class DocumentWSSoapBindingStub extends org.apache.axis.client.Stub imple
         }
     }
 
-    public int updateDocumentByDomainUser(java.lang.String documentId, java.util.HashMap parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
+    public int updateDocumentByDomainUser(java.lang.String documentId, java.lang.String parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -245,7 +245,7 @@ public class DocumentWSSoapBindingStub extends org.apache.axis.client.Stub imple
 }
     }
 
-    public int createDocumentByDomainUser(java.lang.String formName, java.util.HashMap parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
+    public int createDocumentByDomainUser(java.lang.String formName, java.lang.String parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }

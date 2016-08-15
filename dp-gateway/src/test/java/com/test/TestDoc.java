@@ -75,7 +75,7 @@ public class TestDoc {
 	}
 	//@Test
 	public void testAllUsers(){
-		String result = HttpRequstService.sendGet("http://localhost:8080/dp/cst/dr","");
+		String result = HttpRequstService.sendGet("http://epathology.kingmed.com.cn:99/dp/cst/dr","");
 		System.out.println("会诊平台所有专家的json字符串："+result);
 	}	
 

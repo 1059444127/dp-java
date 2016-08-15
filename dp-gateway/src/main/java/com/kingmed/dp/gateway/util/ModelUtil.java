@@ -134,5 +134,4 @@ public class ModelUtil {
 		map.put("point", slide.getPoint());
 		return map;
 	}
-	
 }

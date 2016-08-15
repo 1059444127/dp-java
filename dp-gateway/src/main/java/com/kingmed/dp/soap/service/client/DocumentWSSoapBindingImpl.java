@@ -7,12 +7,10 @@
 
 package com.kingmed.dp.soap.service.client;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.kingmed.dp.gateway.client.DocService;
 import com.kingmed.dp.gateway.util.HttpRequest;
 import com.kingmed.dp.gateway.util.ModelUtil;
 
@@ -24,22 +22,31 @@ public class DocumentWSSoapBindingImpl implements com.kingmed.dp.soap.service.cl
 	private static Logger logger = Logger.getLogger(DocumentWSSoapBindingImpl.class);
 	private DocumentService documentService = new DocumentServiceProxy();
 	
-    public int updateDocumentByDomainUser(java.lang.String documentId, java.util.HashMap parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
-    	return documentService.updateDocumentByDomainUser(documentId, parameters, domainUserId, applicationId);
+    public int updateDocumentByDomainUser(java.lang.String documentId, java.lang.String parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
+    	logger.info("createDocumentByDomainUser参数值：documentId="+documentId+",parameters="+parameters+",domainUserId="+domainUserId+",applicationId="+applicationId);
+    	int result = -1;
+    	try {
+			result = documentService.updateDocumentByDomainUser(documentId, parameters, domainUserId, applicationId);
+			if(result == 0){
+				logger.info("更新病例状态为加做项目成功！");
+			}else{
+				result = -1;
+				logger.error("更新病例状态为加做项目失败！");
+			}
+			
+		} catch (Exception e) {
+			logger.error("更新病例状态为加做项目，异常日志："+e);
+			e.printStackTrace();
+		}
+    	return result;
     }
 
-    public int createDocumentByDomainUser(java.lang.String formName, java.util.HashMap parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
-    	logger.debug("createDocumentByDomainUser参数值：formName="+formName+",parameters="+parameters+",domainUserId="+domainUserId+",applicationId="+applicationId);
+    public int createDocumentByDomainUser(java.lang.String formName, java.lang.String parameters, java.lang.String domainUserId, java.lang.String applicationId) throws java.rmi.RemoteException, com.kingmed.dp.soap.service.fault.DocumentWSFault {
+    	logger.info("createDocumentByDomainUser参数值：formName="+formName+",parameters="+parameters+",domainUserId="+domainUserId+",applicationId="+applicationId);
 		int rnt = -1;
 		try {
 			//调用旧系统的api  写入数据
-			if("未诊断列表".equals(formName)){
-				rnt = documentService.createDocumentByDomainUser("未诊断列表", (HashMap<String,Object>)parameters, domainUserId, applicationId);
-			}else if("leave_info_new".equals(formName)){
-				rnt = documentService.createDocumentByDomainUser("leave_info_new", (HashMap<String,Object>)parameters, domainUserId, applicationId);
-			}else if("number_section".equals(formName)){
-				rnt = documentService.createDocumentByDomainUser("number_section", (HashMap<String,Object>)parameters, domainUserId, applicationId);
-			}
+				rnt = documentService.createDocumentByDomainUser(formName, parameters, domainUserId, applicationId);
 			if(rnt == 0){
 				logger.info("旧系统创建会诊请求与反馈信息执行成功！"+formName);
 			}else{
@@ -53,10 +60,10 @@ public class DocumentWSSoapBindingImpl implements com.kingmed.dp.soap.service.cl
 				
 				String dp="";
 				if("未诊断列表".equals(formName)){
-					Map<String,Object> caseJson = ModelUtil.getCstCase(parameters);
-					dp = HttpRequest.postMethod(ModelUtil.dp_url+"/cons/cstCase/update", caseJson,cookie);
+					//Map<String,Object> caseJson = ModelUtil.getCstCase(parameters);
+					//dp = HttpRequest.postMethod(ModelUtil.dp_url+"/cons/cstCase/update", caseJson,cookie);
 					if("".equals(dp)){
-			    		logger.info(DocService.class+"登陆新系统失败，请检查用户名密码是否正确！username:"+ModelUtil.DP_USERNAME+",password:"+ModelUtil.DP_PASSWORD);
+			    		logger.info(DocumentWSSoapBindingImpl.class+"登陆新系统失败，请检查用户名密码是否正确！username:"+ModelUtil.DP_USERNAME+",password:"+ModelUtil.DP_PASSWORD);
 			    	}
 					logger.debug("新系统病例信息创建"+dp+"条成功！");
 				}else if("leave_info_new".equals(formName)){

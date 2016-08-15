@@ -25,8 +25,8 @@ public class UsersCommand extends HystrixCommand<String>{
     public UsersCommand (ParamsDto params) {
         super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("UsersGroup"))
                 .andCommandKey(HystrixCommandKey.Factory.asKey("UsersURL"))
-                /* 配置依赖超时时间,3000毫秒*/ 
-                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().withExecutionIsolationThreadTimeoutInMilliseconds(3000))
+                /* 配置依赖超时时间,10000毫秒*/ 
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().withExecutionIsolationThreadTimeoutInMilliseconds(10000))
         		);
         this.params = params;
     }

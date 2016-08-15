@@ -10,6 +10,10 @@ public class ParamsDto implements Serializable{
 
 	private static final long serialVersionUID = -8627872998073118758L;
 
+	public static final String TESTID = "testId";
+	public static final String BARCODE = "barcode";
+	public static final String ANTIBODY = "antiBody";
+	
 	private Map<String,String> map;
 
 	public ParamsDto() {

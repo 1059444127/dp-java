@@ -22,7 +22,7 @@ public class DocumentWSServiceLocator extends org.apache.axis.client.Service imp
     }
 
     // Use to get a proxy class for DocumentWS
-    private java.lang.String DocumentWS_address = "http://localhost:8080/dp/services/DocumentWS";
+    private java.lang.String DocumentWS_address = "http://epathology.kingmed.com.cn:99/dp/services/DocumentWS";
 
     public java.lang.String getDocumentWSAddress() {
         return DocumentWS_address;
